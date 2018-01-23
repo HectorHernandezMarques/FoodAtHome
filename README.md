@@ -24,5 +24,5 @@ FoodAtHome es una web de pedidos de comida a domicilio, en la cual, podrás elab
   - d.diazro@alumnos.urjc.es
   
 - Miguel Angel Huerta Rodriguez
-  -ma.huerta@alumnos.urjc.es
+  - ma.huerta@alumnos.urjc.es
   
