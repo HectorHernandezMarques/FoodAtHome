@@ -1,5 +1,6 @@
 <html>
 	<head>
+	<meta charset="UTF-8"/>
 		<title>Food At Home</title>
 		
 		<style type="text/css">
@@ -77,13 +78,38 @@
 				<li><a href="">Inicio</a></li>
 				<li><a href="">Modificiar Menus</a></li>
 				<li><a href="">Modificar Ofertas</a></li>
-				<li><a href="/anadproduc">Modificiar Productos</a></li>
+				<li><a href=>Modificiar Productos</a></li>
 				
 			</ul>
-			<p><a>BIENVENIDO {{name}}</a></p>
+			<p><a>BIENVENIDO lokoh </a></p>
 		</div>	
-		<form action="/main">
-			<input type='submit' value='SALIR'>		
-		</form>	
+			<form action="/main"> 
+			<input type='submit' value='SALIR'>	
+			</form>
+
+				<br></br>
+				<br></br>
+				<br></br>
+				<br></br>
+		
+		
+ 				{{#productos}}
+				<a>{{nombre}}<br></br>
+				{{precio}}<br></br></a>
+ 				{{/productos}} 
+	
+				<br>  
+			
+			
+ 			<form action="/anadproduc/nuevo" method="post">
+ 				<p>Nombre: </p> 
+ 				<input type='text' name='nombre'/> 
+				<p>Precio:</p> 
+ 				<input type='text' name='precio'/>
+				<p>Comentario:</p> 
+ 				<textarea name='comentario' rows=5 cols=40></textarea>
+
+ 				<input type='submit' value='Enviar'/> 
+ 			</form> 
 	</body>
 </html>
