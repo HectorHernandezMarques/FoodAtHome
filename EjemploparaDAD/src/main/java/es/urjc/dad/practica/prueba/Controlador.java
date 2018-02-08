@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class Controlador  {
 	@RequestMapping ("/main")
+	//Romo es gay
 	
 	public String contWeb (Model model){		
 		
