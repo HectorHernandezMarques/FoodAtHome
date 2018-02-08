@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class Controlador  {
+	//holii comiteo
 	
 	private List<Productos> productos = new ArrayList<>();
 	public Controlador(){
