@@ -1,8 +1,11 @@
 package es.urjc.dad.practica.prueba;
 
-import java.util.ArrayList;
-import java.util.List;
+//import java.util.ArrayList;
+//import java.util.List;
 
+import javax.annotation.PostConstruct;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,13 +15,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class Controlador  {
-	//holii comiteo
 	
-	private List<Productos> productos = new ArrayList<>();
-	public Controlador(){
+	@Autowired
+	private ProductosRepository productos;
+	
+	@PostConstruct
+	public void init(){
 		
-		productos.add(new Productos("Hamburguesa",2,""));
-		productos.add(new Productos("Pizza",6,""));
+		productos.save(new Productos("Hamburguesa",2,""));
+		productos.save(new Productos("Pizza",6,""));
+		productos.save(new Productos("Patatas",3,""));
+		productos.save(new Productos("Agua",1,""));
 	}
 	
 	@RequestMapping ("/main")
@@ -50,8 +57,7 @@ public class Controlador  {
 	@GetMapping("/anadproduc")
 	public String anadProduc(Model model){
 		
-		
-		model.addAttribute("productos", productos);
+		model.addAttribute("productos", productos.findAll());
 		
 		
 		return "AnadirProductos";
@@ -60,7 +66,7 @@ public class Controlador  {
 	@PostMapping("/anadproduc/nuevo")
 	public String nuevoProducto(Model model, Productos productonew) {
 
-		productos.add(productonew);
+		productos.save(productonew);
 
 		return "prueba";
 

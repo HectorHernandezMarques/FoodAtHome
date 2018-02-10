@@ -1,12 +1,21 @@
 package es.urjc.dad.practica.prueba;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 
+@Entity
 public class Productos {
-
+		
+		@Id
+		@GeneratedValue(strategy= GenerationType.AUTO)
+		private long id;
+		
 		private String nombre;
 		private int precio;
 		private String comentario;
 
-		public Productos() {
+		protected Productos() {
 
 		}
 
