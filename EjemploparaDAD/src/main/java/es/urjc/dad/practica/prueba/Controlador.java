@@ -54,6 +54,26 @@ public class Controlador  {
 		return "prueba";
 	}
 	
+	
+	
+	@GetMapping("/main/Contacto")
+	public String Contacto(Model model) {
+		
+		//model.addAttribute();
+		
+		return "Contacto";
+	}
+	
+
+	@GetMapping("/main/Productos")
+	public String Productos(Model model) {
+		
+		model.addAttribute("productos", productos.findAll());
+		
+		return "Productos";
+	}
+	
+	
 	@GetMapping("/anadproduc")
 	public String anadProduc(Model model){
 		
