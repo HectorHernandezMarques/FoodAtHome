@@ -19,6 +19,9 @@ public class Controlador  {
 	@Autowired
 	private ProductosRepository productos;
 	
+	@Autowired
+	private OfertasRepository ofertas;
+	
 	@PostConstruct
 	public void init(){
 		
@@ -26,7 +29,14 @@ public class Controlador  {
 		productos.save(new Productos("Pizza",6,""));
 		productos.save(new Productos("Patatas",3,""));
 		productos.save(new Productos("Agua",1,""));
+		
+		
+		ofertas.save(new Ofertas("Menu Hamburguesa",5, ""));
+		ofertas.save(new Ofertas("Menu Pizza", 6, "")); 
+		ofertas.save(new Ofertas("Menu Doble", 5, ""));
 	}
+	
+	
 	
 	@RequestMapping ("/main")
 	public String contWeb (Model model){		
@@ -38,8 +48,6 @@ public class Controlador  {
 	public String Admin (Model model, @RequestParam String name){
 		
 		model.addAttribute("name",name);
-		
-		
 		
 		return "Admin";
 	
@@ -64,13 +72,26 @@ public class Controlador  {
 		return "Contacto";
 	}
 	
+	
+	
 
 	@GetMapping("/main/Productos")
 	public String Productos(Model model) {
 		
 		model.addAttribute("productos", productos.findAll());
 		
-		return "Productos";
+		return "Productos";	
+	}
+	
+
+	@GetMapping("/main/oferta1")
+	public String Ofertas(Model model) {
+		
+		model.addAttribute("ofertas", ofertas.findAll());
+		
+		return "oferta1";
+		
+		
 	}
 	
 	
@@ -83,13 +104,15 @@ public class Controlador  {
 		return "AnadirProductos";
 	}
 	
+	
+	
 	@PostMapping("/anadproduc/nuevo")
 	public String nuevoProducto(Model model, Productos productonew) {
 
 		productos.save(productonew);
 
 		return "prueba";
-
 	}
 	
+		
 }

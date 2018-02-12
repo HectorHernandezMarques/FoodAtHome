@@ -7,7 +7,8 @@
 			* {
 				margin:0px;
 				padding:0px;
-/* 				background:url('http://www.grupoalvic.com/wp-content/plugins/productos-alvic/productos/muestras/ZSM-negro.jpg'); */
+				
+/* 				background:url('http://www.grupoalvic.com/wp-content/plugins/productos-alvic/productos/muestras/ZSM-negro.jpg');  */
 			}
 			
 			#header {
@@ -70,19 +71,37 @@
 			<ul class="nav">
 			
 			<li>
-          		<img role="presentation" src="http://www70.zippyshare.com/i/9mkWIXGX/21298/logo.png" height="80" alt="">
+          		<img role="presentation" src="http://www70.zippyshare.com/i/9mkWIXGX/21298/logo.png" height="80" alt= "">
       		</li>
       			<li><a href="">FoodATHome</a></li>
   		
 				<li><a href="/web_html">Inicio</a></li>
-				<li><a href="/anadoferta">Modificar Ofertas</a></li>
-				<li><a href="/anadproduc">Modificar Productos</a></li>
 				
+				<li><a href="/main">Ofertas</a>
+					<ul>
+						<li><a href="">Oferta 1</a></li>
+						<li><a href="">Oferta 2</a></li>
+						<li><a href="">Oferta 3</a></li>
+					</ul>
+				</li>
+				<li><a href="/main/Productos">Productos</a></li>
+				<li><a href="/main/Contacto">Contacto</a></li>
 			</ul>
-			<p><a>BIENVENIDO {{name}}</a></p>
-		</div>	
-		<form action="/main">
-			<input type='submit' value='SALIR'>		
-		</form>	
+		</div>
+		
+		<br></br>
+				
+				<br></br>
+				
+				<br></br>
+				<br></br>				
+					
+ 				{{#ofertas}}
+				<a>{{menuOferta}}<br></br>
+				
+				{{precio}}<br></br></a>
+ 				{{/ofertas}} 
+ 				
+		
 	</body>
 </html>
