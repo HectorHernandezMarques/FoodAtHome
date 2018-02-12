@@ -3,7 +3,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+//import javax.persistence.ManyToOne;
 
 @Entity
 public class Productos {
@@ -16,8 +16,8 @@ public class Productos {
 		private int precio;
 		private String comentario;
 		
-		@ManyToOne
-		private Ofertas oferta;
+//		@ManyToOne
+//		private Ofertas oferta;
 
 		protected Productos() {
 

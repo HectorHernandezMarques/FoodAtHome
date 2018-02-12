@@ -20,6 +20,11 @@ public class Controlador  {
 	@Autowired
 	private ProductosRepository productos;
 	
+	@Autowired
+	private PedidoRepository pedidos;
+	
+	private String infoCompartida;
+	
 	
 	@PostConstruct
 	public void init(){
@@ -29,20 +34,35 @@ public class Controlador  {
 		productos.save(new Productos("Patatas",3,""));
 		productos.save(new Productos("Agua",1,""));
 		
-		
+		pedidos.save(new Pedidos(" ",0));
 	}
 	
-	private String infoCompartida;
+	
 
 	@GetMapping(value = "/pedidoActual")
-	public String procesarFormulario(@RequestParam String info, HttpSession sesion) {
-
-		sesion.setAttribute("infoUsuario", info);
+	public String procesarFormulario(@RequestParam String info,int precio, HttpSession sesion) {
+		
+		
+		sesion.setAttribute("infoPedido", info);
+		sesion.setAttribute("infoPrecio", precio);
 		infoCompartida = info;
+
+		return "pedidoinfo";
+	}
+	
+	@GetMapping("/mostrarPedido")
+	public String mostrarDatos(Model model, HttpSession sesion) {
+
+		String infoPedido = (String) sesion.getAttribute("infoPedido");
+		int infoPrecio = (int) sesion.getAttribute("infoPrecio");
+
+		model.addAttribute("infoPedido", infoPedido);
+		model.addAttribute("infoPrecio",infoPrecio);
+		
+		
 
 		return "prueba2";
 	}
-	
 	
 	@RequestMapping ("/main")
 	public String contWeb (Model model){		
@@ -85,6 +105,7 @@ public class Controlador  {
 	public String Productos(Model model) {
 		
 		model.addAttribute("productos", productos.findAll());
+		model.addAttribute("pedidos",pedidos.findAll());
 		
 		return "Productos";	
 	}
@@ -140,5 +161,20 @@ public class Controlador  {
 		return "prueba";
 	}
 	
+	@GetMapping("/pedir")
+	public String nuevoPedido(Model model) {
+
+		model.addAttribute("pedidos",pedidos.findAll());
+
+		return "Productos";
+	}
+	
+	@PostMapping("/pedido")
+	public String nuevoPedido(Model model, Pedidos pedidonew) {
+
+		pedidos.save(pedidonew);
+
+		return "pedidoinfo2";
+	}
 		
 }

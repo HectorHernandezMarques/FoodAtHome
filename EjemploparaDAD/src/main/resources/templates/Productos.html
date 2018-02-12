@@ -107,15 +107,30 @@
 				<br></br>
 				<br></br>
 					
+					{{#pedidos}}
+				<a>{{productos}}<br></br>
+				{{precio}}<br></br></a>
+ 				{{/pedidos}} 
+	
+				<br>  
 					
  				{{#productos}}
 				
  					<img role="presentation" src="https://unareceta.com/wp-content/uploads/2016/10/hamburguesa.jpg" align="left" height="200" alt="" width="300"> 
- 				    <H2><a href="">{{nombre}}</a></H2><br></br>
+ 				    <H2>
+		 				<a>{{nombre}}</a></H2><br></br>
+		 				
 					<H2>{{precio}} €</H2><br></br> 
+					
+					<form action="/pedido" method="post">
+		 				<input type="hidden" name='productos' value={{nombre}}/> 
+		 				<input type="hidden" name='precio' value={{precio}}/> 
+ 					<input  type='submit' value='Pedir'/> 
+ 			</form> 
 						
 				
-			{{/productos}}  
+			{{/productos}}
+		
  				
 				
  			
