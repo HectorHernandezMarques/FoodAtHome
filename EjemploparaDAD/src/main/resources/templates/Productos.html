@@ -72,10 +72,13 @@
 		<div id="header">
 			<ul class="nav">
 			
-			</li>
+			
+			<li>
+          		<img role="presentation" src="https://pbs.twimg.com/media/DV2ypqPW0AMKN7u.png:large" height="80" alt="">
+      		</li>
       			<li><a href="">FoodATHome</a></li>
   		
-				<li><a href="/web_html">Inicio</a></li>
+				<li><a href="/main">Inicio</a></li>
 				
 				<li><a href="">Ofertas</a>
 					<ul>
@@ -94,14 +97,8 @@
 			<input type='submit' value='Enviar'>		
 		</form>	
 			
-			<li>
-          		<img role="presentation" src="http://www70.zippyshare.com/i/9mkWIXGX/21298/logo.png" height="80" alt="">
-      		</li>
-   
-				
-			</ul>
 			
-		</div>
+   
 
 				<br></br>
 				
@@ -109,15 +106,17 @@
 				
 				<br></br>
 				<br></br>
-					<img role="presentation" src="https://unareceta.com/wp-content/uploads/2016/10/hamburguesa.jpg" height="200" alt="" width="300">
+					
 					
  				{{#productos}}
-				<a>{{nombre}}<br></br>
 				
-				{{precio}}<br></br></a>
- 				{{/productos}} 
+ 					<img role="presentation" src="https://unareceta.com/wp-content/uploads/2016/10/hamburguesa.jpg" align="left" height="200" alt="" width="300"> 
+ 				    <H2><a href="">{{nombre}}</a></H2><br></br>
+					<H2>{{precio}} €</H2><br></br> 
+						
 				
-				<br> 
+			{{/productos}}  
+ 				
 				
  			
 	</body>

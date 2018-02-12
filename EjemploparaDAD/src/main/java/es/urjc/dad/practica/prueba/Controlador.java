@@ -4,6 +4,7 @@ package es.urjc.dad.practica.prueba;
 //import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,8 +20,6 @@ public class Controlador  {
 	@Autowired
 	private ProductosRepository productos;
 	
-	@Autowired
-	private OfertasRepository ofertas;
 	
 	@PostConstruct
 	public void init(){
@@ -31,11 +30,18 @@ public class Controlador  {
 		productos.save(new Productos("Agua",1,""));
 		
 		
-		ofertas.save(new Ofertas("Menu Hamburguesa",5, ""));
-		ofertas.save(new Ofertas("Menu Pizza", 6, "")); 
-		ofertas.save(new Ofertas("Menu Doble", 5, ""));
 	}
 	
+	private String infoCompartida;
+
+	@GetMapping(value = "/pedidoActual")
+	public String procesarFormulario(@RequestParam String info, HttpSession sesion) {
+
+		sesion.setAttribute("infoUsuario", info);
+		infoCompartida = info;
+
+		return "prueba2";
+	}
 	
 	
 	@RequestMapping ("/main")
@@ -85,11 +91,31 @@ public class Controlador  {
 	
 
 	@GetMapping("/main/oferta1")
-	public String Ofertas(Model model) {
+	public String Oferta1(Model model) {
 		
-		model.addAttribute("ofertas", ofertas.findAll());
+		
 		
 		return "oferta1";
+		
+		
+	}
+	
+	@GetMapping("/main/oferta2")
+	public String Oferta2(Model model) {
+		
+		
+		
+		return "oferta2";
+		
+		
+	}
+	
+	@GetMapping("/main/oferta3")
+	public String Oferta3(Model model) {
+		
+		
+		
+		return "oferta3";
 		
 		
 	}

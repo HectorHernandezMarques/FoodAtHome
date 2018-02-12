@@ -1,6 +1,5 @@
 <html>
 	<head>
-	<meta charset="UTF-8"/>
 		<title>Food At Home</title>
 		
 		<style type="text/css">
@@ -8,7 +7,8 @@
 			* {
 				margin:0px;
 				padding:0px;
-/* 				background:url('http://www.grupoalvic.com/wp-content/plugins/productos-alvic/productos/muestras/ZSM-negro.jpg'); */
+				
+/* 				background:url('http://www.grupoalvic.com/wp-content/plugins/productos-alvic/productos/muestras/ZSM-negro.jpg');  */
 			}
 			
 			#header {
@@ -71,44 +71,36 @@
 			<ul class="nav">
 			
 			<li>
-          		<img role="presentation" src="http://www70.zippyshare.com/i/9mkWIXGX/21298/logo.png" height="80" alt="">
+          		<img role="presentation" src="https://pbs.twimg.com/media/DV2ypqPW0AMKN7u.png:large" height="80" alt= "">
       		</li>
       			<li><a href="">FoodATHome</a></li>
   		
-				<li><a href="/main">Inicio</a></li>
-				<li><a href="">Modificar Ofertas</a></li>
-				<li><a href=>Modificar Productos</a></li>
+				<li><a href="/web_html">Inicio</a></li>
 				
+				<li><a href="/main">Ofertas</a>
+					<ul>
+						<li><a href="/main/oferta1">Oferta 1</a></li>
+						<li><a href="">Oferta 2</a></li>
+						<li><a href="/main/oferta3">Oferta 3</a></li>
+					</ul>
+				</li>
+				<li><a href="/main/Productos">Productos</a></li>
+				<li><a href="/main/Contacto">Contacto</a></li>
 			</ul>
-			<p><a>BIENVENIDO ADMIN</a></p>
-		</div>	
-			<form action="/main"> 
-			<input type='submit' value='SALIR'>	
-			</form>
-
-				<br></br>
-				<br></br>
-				<br></br>
-				<br></br>
+		</div>
 		
+		<br></br>
+				
+				<br></br>
+				
+				<br></br>
+				<br></br>				
+				<div class= "oferta1" align="center">
+					<H2><b>OFERTA 2 :</b> PIZZA + BEBIDA</H2>	
+					<H1>7 Euros</H1>
+					<br></br>
+	 				<a href=""><img role="presentation" src="http://4.bp.blogspot.com/-Y67km425b3c/USWwz142s7I/AAAAAAAAaFU/icZNwLPJyQQ/s1600/promo1.jpg" height="300"></a>
+ 				</div>
 		
- 				{{#productos}}
-				<a>{{nombre}}<br></br>
-				{{precio}}<br></br></a>
- 				{{/productos}} 
-	
-				<br>  
-			
-			
- 			<form action="/anadproduc/nuevo" method="post">
- 				<p>Nombre: </p> 
- 				<input type='text' name='nombre'/> 
-				<p>Precio:</p> 
- 				<input type='text' name='precio'/>
-				<p>Comentario:</p> 
- 				<textarea name='comentario' rows=5 cols=40></textarea>
-
- 				<input type='submit' value='Enviar'/> 
- 			</form> 
 	</body>
 </html>
