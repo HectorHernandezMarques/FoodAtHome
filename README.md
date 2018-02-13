@@ -27,12 +27,16 @@ FoodAtHome es una web de pedidos de comida a domicilio, en la cual, podrás elab
   - ma.huerta@alumnos.urjc.es
   
 # FASE 1
+
   # Navegación de la pagina web
+  
    - Inicio: muestra la descripción de la empresa y lo que ofrece.
     ![imagen](https://github.com/pracDAD2018/FoodAtHome/blob/master/EjemploparaDAD/Screenshots/Inicio.png)
     
+    
    - Ofertas: despliega un submenu con las ofertas disponibles. Pinchar en una oferta la añade al pedido.   
     ![imagen](https://github.com/pracDAD2018/FoodAtHome/blob/master/EjemploparaDAD/Screenshots/Ofertas.png)
+    
     
    - Productos: lista de los productos disponibles para pedido.
    
