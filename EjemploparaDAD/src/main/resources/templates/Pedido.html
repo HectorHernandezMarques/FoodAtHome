@@ -1,0 +1,36 @@
+{{>header}}
+<html>
+<body>
+	<form action="/admin">
+ 			<p>USUARIO: </p>
+ 			<input type='text' name='name'>
+ 			<input type='submit' value='Enviar'>		
+ 		</form>	
+ 		
+<br></br>
+
+<div class="carrito" align="center">
+<br></br>
+
+<a><H2>ESTE ES SU PEDIDO ACTUAL: </H2> </a>
+<br></br>
+<a> Ha pedido:.....................................................</a>{{#pedidos}}<a>{{comentarios}} : </a>{{/pedidos}}
+<br></br> 
+																	   {{#pedidos}}
+																	   <a>{{bebidas_id}} : </a>
+																	   {{/pedidos}}<br></br>
+<a> El precio a abonar son:........................................</a>{{#Pedidos}}
+																		<a>{{precio}} : </a>
+																		{{/Pedidos}} 
+<br></br>
+<a>																		Le atendio <a> Administradores.id=1</a></a>
+ 		
+
+
+
+</div>
+
+
+
+</body>
+</html>

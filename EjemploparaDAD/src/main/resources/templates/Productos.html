@@ -1,0 +1,60 @@
+ {{>header}}
+ <html>
+ 	
+ 		<form action="/admin">
+ 			<p>USUARIO: </p>
+ 			<input type='text' name='name'>
+ 			<input type='submit' value='Enviar'>		
+ 		</form>	
+ 			
+ 			
+    
+ 
+ 				<br></br>
+ 				
+ 				<br></br>
+ 				
+  				<br></br>
+  				<br></br>
+  				
+  					
+   				{{#comidas}}
+  				
+   					<img role="presentation" src="https://unareceta.com/wp-content/uploads/2016/10/hamburguesa.jpg" align="middle" height="200" alt="" width="300"> 
+ 				    <H2><a href=""></a></H2>
+  				    <H2>
+ 		 				<a>{{nombre}}</a></H2><br></br>
+ 		 				
+  					<H2>{{precio}} €</H2><br></br> 
+  					
+ 					{{/comidas}}
+
+ 			   				{{#bebidas}}
+  				
+   					<img role="presentation" src="http://www.abuelitaspizza.com/images/bebidas.png?crc=149676140" align="middle" height="200" alt="" width="300"> 
+ 				    <H2><a href=""></a></H2>
+  				    <H2>
+ 		 				<a>{{nombre}}</a></H2><br></br>
+ 		 				
+  					<H2>{{precio}} €</H2><br></br>
+
+  						{{/bebidas}}
+  				
+  				<form action="/pedido" method="POST">
+					  <select name="precio">
+					    <option value="1">Hamburguesa</option>
+					    <option value="2">Pizza</option>
+					    <option value="3">Patatas</option>
+					  </select>
+					  <br><br>
+					  <input type="submit">
+					</form>
+  			
+				
+ 			 
+ 		
+ 		
+ 		
+   	</body>			
+  	 </html>			
+   			

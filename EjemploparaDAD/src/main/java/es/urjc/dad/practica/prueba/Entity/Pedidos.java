@@ -1,14 +1,17 @@
 package es.urjc.dad.practica.prueba.Entity;
 
 
+
+import java.util.ArrayList;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-//import javax.persistence.OneToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
-//import java.util.List;
+import java.util.List;
 
 @Entity
 public class Pedidos {
@@ -21,8 +24,8 @@ public class Pedidos {
 	private String comentario;
 	private int precio;
 	
-	@OneToOne
-	private Comidas Comidas;
+	@OneToMany
+	private List<Comidas> comidas = new ArrayList<>();
 	@OneToOne
 	private Bebidas Bebidas;
 	@OneToOne
@@ -39,7 +42,7 @@ public class Pedidos {
 	}
 
 	
-	public Pedidos(String comida,String bebida,String oferta,String administrador,String comentario, int precio) {
+	public Pedidos(String comida,Bebidas bebida,String oferta,String administrador,String comentario, int precio) {
 		super();
 		
 		
@@ -73,9 +76,59 @@ public class Pedidos {
 
 
 
+	public long getId() {
+		return id;
+	}
+
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
+
+	public List<Comidas> getComidas() {
+		return comidas;
+	}
+
+
+	public void setComidas(List<Comidas> comidas) {
+		this.comidas = comidas;
+	}
+
+
+	public Bebidas getBebidas() {
+		return Bebidas;
+	}
+
+
+	public void setBebidas(Bebidas bebidas) {
+		Bebidas = bebidas;
+	}
+
+
+	public Ofertas getOfertas() {
+		return Ofertas;
+	}
+
+
+	public void setOfertas(Ofertas ofertas) {
+		Ofertas = ofertas;
+	}
+
+
+	public Administradores getAdministradores() {
+		return Administradores;
+	}
+
+
+	public void setAdministradores(Administradores administradores) {
+		Administradores = administradores;
+	}
+
+
 	@Override
 	public String toString() {
-		return "Comidad y bebida=" + Comidas + Bebidas+ ", precio=" + precio + "€";
+		return "Comidad y bebida=" + comidas + Bebidas+ ", precio=" + precio + "€";
 	}
 
 }

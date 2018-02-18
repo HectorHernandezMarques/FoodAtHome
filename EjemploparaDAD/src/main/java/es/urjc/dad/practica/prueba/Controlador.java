@@ -46,35 +46,11 @@ public class Controlador  {
 		bebidas.save(new Bebidas("","Agua",1,""));
 		bebidas.save(new Bebidas("","Ceveza", 2,""));
 		
+	
 
 	}
 	
 	
-
-	@GetMapping(value = "/pedidoActual")
-	public String procesarFormulario(@RequestParam String info,int precio, HttpSession sesion) {
-		
-		
-		sesion.setAttribute("infoPedido", info);
-		sesion.setAttribute("infoPrecio", precio);
-		infoCompartida = info;
-
-		return "pedidoinfo";
-	}
-	
-	@GetMapping("/mostrarPedido")
-	public String mostrarDatos(Model model, HttpSession sesion) {
-
-		String infoPedido = (String) sesion.getAttribute("infoPedido");
-		int infoPrecio = (int) sesion.getAttribute("infoPrecio");
-
-		model.addAttribute("infoPedido", infoPedido);
-		model.addAttribute("infoPrecio",infoPrecio);
-		
-		
-
-		return "prueba2";
-	}
 	
 	@RequestMapping ("/main")
 	public String contWeb (Model model){		
@@ -153,6 +129,13 @@ public class Controlador  {
 		
 	}
 	
+	@GetMapping("/Pedidos")
+	public String Pedidos(Model model)
+	{
+		
+		return "Pedido";
+	}
+	
 	
 	@GetMapping("/anadproduc")
 	public String anadProduc(Model model){
@@ -172,10 +155,11 @@ public class Controlador  {
 		
 		if (tipo=="comida") {
 
-		comidas.save(comidanew);
+		bebidas.save(bebidanew);
 		}
 		else{
-		bebidas.save(bebidanew);}
+		comidas.save(comidanew);
+		}
 
 		return "prueba";
 	}
@@ -189,7 +173,7 @@ public class Controlador  {
 	}
 	
 	@PostMapping("/pedido")
-	public String nuevoPedido(Model model, Pedidos pedidonew) {
+	public String nuevoPedido(Pedidos pedidonew, Model model ) {		
 
 		pedidos.save(pedidonew);
 

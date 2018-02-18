@@ -91,18 +91,20 @@
 				<br></br>
 				<br></br>
 		
-		
+		<div align="left">
  				{{#comidas}}
-				<a>{{nombre}}<br></br>
-				{{precio}}<br></br></a>
+				<a><H2>{{nombre}} : </H2>
+				<H3>{{precio}} € </H3><br></br></a>
  				{{/comidas}} 
-	
+ 		</div>
+		<div align="right">
 				<br>  
 				{{#bebidas}}
-				<a>{{nombre}}<br></br>
-				{{precio}}<br></br></a>
+				<a><H2>{{nombre}} : </H2>
+				<H3>{{precio}} €</H3><br></br></a>
  				{{/bebidas}} 
-	
+ 		</div>
+	<div class="container" align="center">
 				<br>  
 				<form action="">
 				<p>¿Que tipo de producto quiere añadir? </p>
@@ -119,8 +121,10 @@
  				<input type='text' name='precio'/>
 				<p>Comentario:</p> 
  				<textarea name='comentario' rows=5 cols=40></textarea>
+ 				<br></br>
 
  				<input type='submit' value='Enviar'/> 
  			</form> 
+ 			</div>
 	</body>
 </html>
