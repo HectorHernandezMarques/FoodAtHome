@@ -1,13 +1,15 @@
-package es.urjc.dad.practica.prueba;
+package es.urjc.dad.practica.prueba.Entity;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-//import javax.persistence.ManyToOne;
 
 @Entity
-public class Productos {
-		
+public class Comidas {
+	
+	
+	
 		@Id
 		@GeneratedValue(strategy= GenerationType.AUTO)
 		private long id;
@@ -19,17 +21,18 @@ public class Productos {
 //		@ManyToOne
 //		private Ofertas oferta;
 
-		protected Productos() {
+		protected Comidas() {
 
 		}
 
-		public Productos(String nombre, int precio, String comentario) {
+		public Comidas(String nombre, int precio, String comentario) {
 			super();
 			this.nombre = nombre;
 			this.precio = precio;
 			this.comentario = comentario;
 		}
-
+		
+		
 		public String getNombre() {
 			return nombre;
 		}
@@ -54,11 +57,7 @@ public class Productos {
 			this.comentario = comentario;
 		}
 
-		@Override
-		public String toString() {
-			return "Anuncio [nombre=" + nombre + ", precio=" + precio + "€ , comentario=" + comentario + "]";
-		}
+		
+		
 
-	}
-
-
+}

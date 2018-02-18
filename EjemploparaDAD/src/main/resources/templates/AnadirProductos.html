@@ -92,15 +92,27 @@
 				<br></br>
 		
 		
- 				{{#productos}}
+ 				{{#comidas}}
 				<a>{{nombre}}<br></br>
 				{{precio}}<br></br></a>
- 				{{/productos}} 
+ 				{{/comidas}} 
 	
 				<br>  
+				{{#bebidas}}
+				<a>{{nombre}}<br></br>
+				{{precio}}<br></br></a>
+ 				{{/bebidas}} 
+	
+				<br>  
+				<form action="">
+				<p>¿Que tipo de producto quiere añadir? </p>
+  				<input type="radio" name="tipo" value="comida"> Comida<br>
+ 			    <input type="radio" name="tipo" value="bebida"> Bebida<br>
+				</form>
 			
 			
  			<form action="/anadproduc/nuevo" method="post">
+ 			
  				<p>Nombre: </p> 
  				<input type='text' name='nombre'/> 
 				<p>Precio:</p> 

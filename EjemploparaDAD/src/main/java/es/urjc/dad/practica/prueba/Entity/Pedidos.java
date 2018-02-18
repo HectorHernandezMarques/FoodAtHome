@@ -1,4 +1,4 @@
-package es.urjc.dad.practica.prueba;
+package es.urjc.dad.practica.prueba.Entity;
 
 
 import javax.persistence.Entity;
@@ -6,6 +6,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 //import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 //import java.util.List;
 
@@ -16,8 +17,18 @@ public class Pedidos {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
 	
-	private String productos;
+
+	private String comentario;
 	private int precio;
+	
+	@OneToOne
+	private Comidas Comidas;
+	@OneToOne
+	private Bebidas Bebidas;
+	@OneToOne
+	private Ofertas Ofertas;
+	@OneToOne
+	private Administradores Administradores;
 	
 //	
 //	@OneToMany
@@ -28,20 +39,28 @@ public class Pedidos {
 	}
 
 	
-	public Pedidos(String productos, int precio) {
+	public Pedidos(String comida,String bebida,String oferta,String administrador,String comentario, int precio) {
 		super();
-		this.productos = productos;
+		
+		
+		this.comentario=comentario;
 		this.precio = precio;
 			}
+
+
 	
-	
-	public String getproductos() {
-		return productos;
+
+
+	public String getComentario() {
+		return comentario;
 	}
 
-	public void setproductos(String productos) {
-		this.productos = productos;
+
+	public void setComentario(String comentario) {
+		this.comentario = comentario;
 	}
+	
+	
 
 	public int getPrecio() {
 		return precio;
@@ -56,7 +75,7 @@ public class Pedidos {
 
 	@Override
 	public String toString() {
-		return "Anuncio productos=" + productos + ", precio=" + precio + "€";
+		return "Comidad y bebida=" + Comidas + Bebidas+ ", precio=" + precio + "€";
 	}
 
 }

@@ -14,27 +14,39 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import es.urjc.dad.practica.prueba.Entity.Comidas;
+import es.urjc.dad.practica.prueba.Entity.Bebidas;
+import es.urjc.dad.practica.prueba.Entity.Pedidos;
+import es.urjc.dad.practica.prueba.Repositories.PedidoRepository;
+import es.urjc.dad.practica.prueba.Repositories.ComidasRepository;
+import es.urjc.dad.practica.prueba.Repositories.BebidasRepository;
+
 @Controller
 public class Controlador  {
 	
 	@Autowired
-	private ProductosRepository productos;
+	private ComidasRepository comidas;
 	
 	@Autowired
 	private PedidoRepository pedidos;
 	
+	@Autowired
+	private BebidasRepository bebidas;
+	
 	private String infoCompartida;
+	private String tipo;
 	
 	
 	@PostConstruct
 	public void init(){
 		
-		productos.save(new Productos("Hamburguesa",2,""));
-		productos.save(new Productos("Pizza",6,""));
-		productos.save(new Productos("Patatas",3,""));
-		productos.save(new Productos("Agua",1,""));
+	    comidas.save(new Comidas("Hamburguesa",2,""));
+		comidas.save(new Comidas("Pizza",6,""));
+		comidas.save(new Comidas("Patatas",3,""));
+		bebidas.save(new Bebidas("","Agua",1,""));
+		bebidas.save(new Bebidas("","Ceveza", 2,""));
 		
-		pedidos.save(new Pedidos(" ",0));
+
 	}
 	
 	
@@ -83,7 +95,7 @@ public class Controlador  {
 	@GetMapping("/")
 	public String tablon(Model model) {
 
-		model.addAttribute("productos", productos);
+		model.addAttribute("comidas", comidas);
 
 		return "prueba";
 	}
@@ -104,8 +116,8 @@ public class Controlador  {
 	@GetMapping("/main/Productos")
 	public String Productos(Model model) {
 		
-		model.addAttribute("productos", productos.findAll());
-		model.addAttribute("pedidos",pedidos.findAll());
+		model.addAttribute("comidas", comidas.findAll());
+		model.addAttribute("bebidas",bebidas.findAll());
 		
 		return "Productos";	
 	}
@@ -145,7 +157,9 @@ public class Controlador  {
 	@GetMapping("/anadproduc")
 	public String anadProduc(Model model){
 		
-		model.addAttribute("productos", productos.findAll());
+		model.addAttribute("comidas", comidas.findAll());
+		model.addAttribute("bebidas", bebidas.findAll());
+		
 		
 		
 		return "AnadirProductos";
@@ -154,9 +168,14 @@ public class Controlador  {
 	
 	
 	@PostMapping("/anadproduc/nuevo")
-	public String nuevoProducto(Model model, Productos productonew) {
+	public String nuevoProducto(Model model, Comidas comidanew, Bebidas bebidanew) {
+		
+		if (tipo=="comida") {
 
-		productos.save(productonew);
+		comidas.save(comidanew);
+		}
+		else{
+		bebidas.save(bebidanew);}
 
 		return "prueba";
 	}
