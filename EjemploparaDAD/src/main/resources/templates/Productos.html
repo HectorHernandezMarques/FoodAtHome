@@ -16,28 +16,32 @@
  				
   				<br></br>
   				<br></br>
-  				
+  				<img role="presentation" src="https://unareceta.com/wp-content/uploads/2016/10/hamburguesa.jpg" align="middle" height="200" alt="" width="300">
   					
    				{{#comidas}}
   				
-   					<img role="presentation" src="https://unareceta.com/wp-content/uploads/2016/10/hamburguesa.jpg" align="middle" height="200" alt="" width="300"> 
+   					<ul> <!-- Lista NO ORDENADA -->
  				    <H2><a href=""></a></H2>
   				    <H2>
- 		 				<a>{{nombre}}</a></H2><br></br>
+ 		 				<li> <a>{{nombre}}</a></H2><br></br>
  		 				
-  					<H2>{{precio}} €</H2><br></br> 
-  					
+  					<H2>{{precio}} â‚¬ </H2><br></br>
+  					</li> 
+  					</ul>
  					{{/comidas}}
-
- 			   				{{#bebidas}}
+ 			   		
+ 			   		<img role="presentation" src="http://www.abuelitaspizza.com/images/bebidas.png?crc=149676140" align="middle" height="200" alt="" width="300">
+ 			   		
+ 			   		{{#bebidas}}
   				
-   					<img role="presentation" src="http://www.abuelitaspizza.com/images/bebidas.png?crc=149676140" align="middle" height="200" alt="" width="300"> 
- 				    <H2><a href=""></a></H2>
+   					<ul>
+   					<H2><a href=""></a></H2>
   				    <H2>
- 		 				<a>{{nombre}}</a></H2><br></br>
+ 		 				<li><a>{{nombre}}</a></H2><br></br>
  		 				
-  					<H2>{{precio}} €</H2><br></br>
-
+  					<H2>{{precio}} â‚¬ </H2><br></br>
+					</li>
+					</ul>
   						{{/bebidas}}
   				
   				<form action="/pedido" method="POST">

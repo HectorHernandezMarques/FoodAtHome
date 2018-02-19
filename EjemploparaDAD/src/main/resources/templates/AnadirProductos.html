@@ -62,7 +62,7 @@
 	<body>
 		<style type="text/css">
 		body {  
-        background:url('https://thumbs.dreamstime.com/b/comida-y-fondo-incons%C3%BAtil-de-las-bebidas-48069531.jpg') repeat 0 0;
+        background:url('http://touchechicago.com/wp-content/uploads/2013/10/wood-bg-2-1024x640.jpg') repeat 0 0;
  			}
 		</style>
 		
@@ -104,16 +104,20 @@
 				<H3>{{precio}} €</H3><br></br></a>
  				{{/bebidas}} 
  		</div>
-	<div class="container" align="center">
+	
 				<br>  
 				<form action="">
-				<p>¿Que tipo de producto quiere añadir? </p>
-  				<input type="radio" name="tipo" value="comida"> Comida<br>
- 			    <input type="radio" name="tipo" value="bebida"> Bebida<br>
+				
 				</form>
 			
 			
- 			<form action="/anadproduc/nuevo" method="post">
+ 			<form action="/anadproduc/nuevo" method="POST">
+ 			
+ 				<div class="container" align="center">
+ 			
+ 				<p>¿Que tipo de producto quiere añadir? </p>
+  				<input type="radio" name="tipo" value="comida"/> Comida<br>
+ 			    <input type="radio" name="tipo" value="bebida"/> Bebida<br>
  			
  				<p>Nombre: </p> 
  				<input type='text' name='nombre'/> 
@@ -124,7 +128,8 @@
  				<br></br>
 
  				<input type='submit' value='Enviar'/> 
+ 				
+ 				</div>
  			</form> 
- 			</div>
 	</body>
 </html>
