@@ -1,5 +1,6 @@
 package es.urjc.dad.practica.prueba.Entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,9 +17,9 @@ public class Ofertas {
 	private int precio;
 	private String comentario;
 	
-	@OneToOne
+	@OneToOne (cascade= CascadeType.ALL)
 	private Comidas Comidas;
-	@OneToOne
+	@OneToOne (cascade= CascadeType.ALL)
 	private Bebidas Bebidas;
 
 	protected Ofertas() {

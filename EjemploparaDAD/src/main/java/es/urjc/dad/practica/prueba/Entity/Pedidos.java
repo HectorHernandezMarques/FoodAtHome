@@ -4,10 +4,12 @@ package es.urjc.dad.practica.prueba.Entity;
 
 import java.util.ArrayList;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -24,13 +26,16 @@ public class Pedidos {
 	private String comentario;
 	private int precio;
 	
-	@OneToMany
-	private List<Comidas> comidas = new ArrayList<>();
-	@OneToOne
-	private Bebidas Bebidas;
-	@OneToOne
+	@OneToMany (cascade= CascadeType.ALL)
+	private List<Comidas> comidas;
+	
+	@OneToMany (cascade= CascadeType.ALL)
+	private List <Bebidas> bebidas;
+	
+	@OneToOne (cascade= CascadeType.ALL)
 	private Ofertas Ofertas;
-	@OneToOne
+	
+	@OneToOne (cascade= CascadeType.ALL)
 	private Administradores Administradores;
 	
 //	
@@ -42,12 +47,13 @@ public class Pedidos {
 	}
 
 	
-	public Pedidos(String comida,Bebidas bebida,String oferta,String administrador,String comentario, int precio) {
+	public Pedidos(List<Comidas> comidas,List<Bebidas> bebidas,Administradores administrador,String comentario, int precio) {
 		super();
-		
-		
+		this.comidas=comidas;
+		this.Administradores=administrador;
 		this.comentario=comentario;
 		this.precio = precio;
+		this.bebidas= bebidas;
 			}
 
 
@@ -96,14 +102,14 @@ public class Pedidos {
 	}
 
 
-	public Bebidas getBebidas() {
-		return Bebidas;
-	}
+//	public Bebidas getBebidas() {
+//		return Bebidas;
+//	}
 
 
-	public void setBebidas(Bebidas bebidas) {
-		Bebidas = bebidas;
-	}
+//	public void setBebidas(Bebidas bebidas) {
+//		Bebidas = bebidas;
+//	}
 
 
 	public Ofertas getOfertas() {
@@ -116,19 +122,19 @@ public class Pedidos {
 	}
 
 
-	public Administradores getAdministradores() {
-		return Administradores;
-	}
+//	public Administradores getAdministradores() {
+//		return Administradores;
+//	}
 
 
-	public void setAdministradores(Administradores administradores) {
-		Administradores = administradores;
-	}
+//	public void setAdministradores(Administradores administradores) {
+//		Administradores = administradores;
+//	}
 
 
-	@Override
-	public String toString() {
-		return "Comidad y bebida=" + comidas + Bebidas+ ", precio=" + precio + "€";
-	}
+//	@Override
+//	public String toString() {
+//		return "Comidad y bebida=" + comidas + Bebidas+ ", precio=" + precio + "€";
+//	}
 
 }

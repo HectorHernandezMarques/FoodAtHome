@@ -17,8 +17,6 @@ public class Bebidas {
 	private int precio;
 	private String comentario;
 	
-//	@ManyToOne
-//	private Ofertas oferta;
 	
 	public Bebidas(String tipo,String nombre, int precio, String comentario) {
 		super();

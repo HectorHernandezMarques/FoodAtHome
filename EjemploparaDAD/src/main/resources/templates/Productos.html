@@ -17,17 +17,16 @@
   				<br></br>
   				<br></br>
   				<img role="presentation" src="https://unareceta.com/wp-content/uploads/2016/10/hamburguesa.jpg" align="middle" height="200" alt="" width="300">
-  					
-   				{{#comidas}}
-  				
-   					<ul> <!-- Lista NO ORDENADA -->
- 				    <H2><a href=""></a></H2>
+   					{{#comidas}}
+   					<ul>
+   					<H2><a href=""></a></H2>
   				    <H2>
- 		 				<li> <a>{{nombre}}</a></H2><br></br>
+ 		 				<li><a>{{nombre}}</a></H2><br>
  		 				
-  					<H2>{{precio}} € </H2><br></br>
-  					</li> 
-  					</ul>
+  					<H2>{{precio}} € </H2>
+  					<br>
+					</li>
+					</ul>
  					{{/comidas}}
  			   		
  			   		<img role="presentation" src="http://www.abuelitaspizza.com/images/bebidas.png?crc=149676140" align="middle" height="200" alt="" width="300">
@@ -37,28 +36,29 @@
    					<ul>
    					<H2><a href=""></a></H2>
   				    <H2>
- 		 				<li><a>{{nombre}}</a></H2><br></br>
+ 		 				<li><a>{{nombre}}</a></H2><br>
  		 				
-  					<H2>{{precio}} € </H2><br></br>
+  					<H2>{{precio}} € </H2><br>
 					</li>
 					</ul>
   						{{/bebidas}}
+  						
+  			<H2>PRODUCTO A COMPRAR</H2>
+  			<br></br>
+  						
+ 
+  			<form action="/pedido" method="post">
   				
-  				<form action="/pedido" method="POST">
-					  <select name="precio">
-					    <option value="1">Hamburguesa</option>
-					    <option value="2">Pizza</option>
-					    <option value="3">Patatas</option>
-					  </select>
-					  <br><br>
-					  <input type="submit">
-					</form>
-  			
-				
- 			 
- 		
- 		
- 		
-   	</body>			
+						<select name='comentario'>
+							{{#comidas}}
+								<option value="{{nombre}}" >{{nombre}}</option>
+							{{/comidas}}
+							{{#bebidas}}
+								<option value="{{nombre}}" >{{nombre}}</option>
+							{{/bebidas}}
+
+			<input type='submit' value='Enviar' >
+			</form>	
+			</body>			
   	 </html>			
    			

@@ -1,9 +1,11 @@
 package es.urjc.dad.practica.prueba.Entity;
 
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
 
 @Entity
 public class Comidas {
@@ -18,8 +20,8 @@ public class Comidas {
 		private int precio;
 		private String comentario;
 		
-//		@ManyToOne
-//		private Ofertas oferta;
+	//	@ManyToOne
+	//	private Pedidos pedido;
 
 		protected Comidas() {
 
@@ -30,7 +32,7 @@ public class Comidas {
 			this.nombre = nombre;
 			this.precio = precio;
 			this.comentario = comentario;
-		}
+			}
 		
 		
 		public String getNombre() {
