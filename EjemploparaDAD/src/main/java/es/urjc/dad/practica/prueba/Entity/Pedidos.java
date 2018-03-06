@@ -3,6 +3,7 @@ package es.urjc.dad.practica.prueba.Entity;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -13,7 +14,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
-import java.util.List;
 
 @Entity
 public class Pedidos {
@@ -26,14 +26,16 @@ public class Pedidos {
 	private String comentario;
 	private int precio;
 	
-	@OneToMany (cascade= CascadeType.ALL)
-	private List<Comidas> comidas;
+
+
+	@OneToMany 
+	private List<Comidas> comidas = new ArrayList<>();
 	
-	@OneToMany (cascade= CascadeType.ALL)
-	private List <Bebidas> bebidas;
+	@OneToMany 
+	private List <Bebidas> bebidas = new ArrayList<>();
 	
-	@OneToOne (cascade= CascadeType.ALL)
-	private Ofertas Ofertas;
+	@OneToMany 
+	private List<Ofertas> ofertas = new ArrayList<>();
 	
 	@OneToOne (cascade= CascadeType.ALL)
 	private Administradores Administradores;
@@ -47,13 +49,12 @@ public class Pedidos {
 	}
 
 	
-	public Pedidos(List<Comidas> comidas,List<Bebidas> bebidas,Administradores administrador,String comentario, int precio) {
+	public Pedidos(String comentario, int precio) {
 		super();
-		this.comidas=comidas;
-		this.Administradores=administrador;
+
 		this.comentario=comentario;
 		this.precio = precio;
-		this.bebidas= bebidas;
+	
 			}
 
 
@@ -90,8 +91,6 @@ public class Pedidos {
 	public void setId(long id) {
 		this.id = id;
 	}
-
-
 	public List<Comidas> getComidas() {
 		return comidas;
 	}
@@ -102,24 +101,37 @@ public class Pedidos {
 	}
 
 
-//	public Bebidas getBebidas() {
-//		return Bebidas;
-//	}
-
-
-//	public void setBebidas(Bebidas bebidas) {
-//		Bebidas = bebidas;
-//	}
-
-
-	public Ofertas getOfertas() {
-		return Ofertas;
+	public List<Bebidas> getBebidas() {
+		return bebidas;
 	}
 
 
-	public void setOfertas(Ofertas ofertas) {
-		Ofertas = ofertas;
+	public void setBebidas(List<Bebidas> bebidas) {
+		this.bebidas = bebidas;
 	}
+
+
+	public List<Ofertas> getOfertas() {
+		return ofertas;
+	}
+
+
+	public void setOfertas(List<Ofertas> ofertas) {
+		this.ofertas = ofertas;
+	}
+
+
+	public Administradores getAdministradores() {
+		return Administradores;
+	}
+
+
+	public void setAdministradores(Administradores administradores) {
+		Administradores = administradores;
+	}
+
+
+
 
 
 //	public Administradores getAdministradores() {

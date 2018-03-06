@@ -34,7 +34,7 @@ public class Controlador  {
 	private BebidasRepository bebidas;
 	
 	private String infoCompartida;
-	private String tipo;
+	
 	
 	
 	@PostConstruct
@@ -43,8 +43,8 @@ public class Controlador  {
 	    comidas.save(new Comidas("Hamburguesa",2,""));
 		comidas.save(new Comidas("Pizza",6,""));
 		comidas.save(new Comidas("Patatas",3,""));
-		bebidas.save(new Bebidas("","Agua",1,""));
-		bebidas.save(new Bebidas("","Ceveza", 2,""));
+		bebidas.save(new Bebidas(true,"Agua",1,""));
+		bebidas.save(new Bebidas(true,"Ceveza", 2,""));
 		
 	
 
@@ -153,24 +153,31 @@ public class Controlador  {
 	@PostMapping("/anadproduc/nuevo")
 	public String nuevoProducto(Model model, Comidas comidanew, Bebidas bebidanew) {
 		
-		if (tipo=="comida") {
-
+		System.out.println(bebidanew.getTipo());
+		System.out.println(bebidanew.getNombre());
+		System.out.println(comidanew.getNombre());
+		
+		if (bebidanew.getTipo()) {
+			
+ 
 		bebidas.save(bebidanew);
 		}
-		else{
+		else
+		{
 		comidas.save(comidanew);
 		}
 
 		return "prueba";
+		
 	}
 	
-	@GetMapping("/pedir")
-	public String nuevoPedido(Model model) {
-
-		model.addAttribute("pedidos",pedidos.findAll());
-
-		return "Productos";
-	}
+//	@GetMapping("/pedir")
+//	public String nuevoPedido(Model model) {
+//
+//		model.addAttribute("pedidos",pedidos.findAll());
+//
+//		return "Productos";
+//	}
 	
 	@PostMapping("/pedido")
 	public String nuevoPedido(Pedidos pedidonew, Model model ) {		

@@ -12,13 +12,13 @@ public class Bebidas {
 	@GeneratedValue(strategy= GenerationType.AUTO)
 	private long id;
 	
-	public String tipo;
+	public Boolean tipo;
 	private String nombre;
 	private int precio;
 	private String comentario;
 	
 	
-	public Bebidas(String tipo,String nombre, int precio, String comentario) {
+	public Bebidas(Boolean tipo,String nombre, int precio, String comentario) {
 		super();
 		this.tipo=tipo;
 		this.nombre = nombre;
@@ -26,6 +26,16 @@ public class Bebidas {
 		this.comentario = comentario;
 	}
 	
+
+	public long getId() {
+		return id;
+	}
+
+
+	public void setId(long id) {
+		this.id = id;
+	}
+
 
 	public String getNombre() {
 		return nombre;
@@ -51,12 +61,13 @@ public class Bebidas {
 		this.comentario = comentario;
 	}
 
-	public String getTipo() {
+	public Boolean getTipo() {
+		
 		return tipo;
 	}
 
 
-	public void setTipo(String tipo) {
+	public void setTipo(Boolean tipo) {
 		this.tipo = tipo;
 	}
 

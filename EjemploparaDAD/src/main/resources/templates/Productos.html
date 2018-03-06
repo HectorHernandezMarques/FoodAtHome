@@ -47,18 +47,30 @@
   			<br></br>
   						
  
-  			<form action="/pedido" method="post">
+  			<form action="/pedirComida" method="POST">
   				
-						<select name='comentario'>
+						<select name='id' >
 							{{#comidas}}
-								<option value="{{nombre}}" >{{nombre}}</option>
+								<option value= {{id}}>{{nombre}}</option>						
 							{{/comidas}}
-							{{#bebidas}}
-								<option value="{{nombre}}" >{{nombre}}</option>
-							{{/bebidas}}
-
+							
+						</select>
+						<input type='submit' value='Enviar' >
+						</form>
+						
+						
+				<form action="/pedirBebida" method="POST">		
+						<select name='id'>
+						{{#bebidas}} 
+			 				<option value="{{id}}">{{nombre}}</option> 
+						{{/bebidas}}
+						</select>
 			<input type='submit' value='Enviar' >
-			</form>	
+			</form>
+			
+			<form action="/pedir" >	
+			<input type='submit' value='Pedir'>
+			</form>
 			</body>			
   	 </html>			
    			

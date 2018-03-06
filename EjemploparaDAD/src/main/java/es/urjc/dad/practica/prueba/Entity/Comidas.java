@@ -15,7 +15,6 @@ public class Comidas {
 		@Id
 		@GeneratedValue(strategy= GenerationType.AUTO)
 		private long id;
-		
 		private String nombre;
 		private int precio;
 		private String comentario;
@@ -34,6 +33,13 @@ public class Comidas {
 			this.comentario = comentario;
 			}
 		
+		public long getId() {
+			return id;
+		}
+
+		public void setId(long id) {
+			this.id = id;
+		}
 		
 		public String getNombre() {
 			return nombre;
