@@ -3,13 +3,13 @@ package es.urjc.dad.practica.prueba.Entity;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+
 
 @Entity
 public class Ofertas {
@@ -32,7 +32,7 @@ public class Ofertas {
 
 	}
 
-	public Ofertas(String nombre,String Comidas,String Bebidas, int precio, String comentario) {
+	public Ofertas(String nombre,int precio, String comentario) {
 		super();
 		
 		this.nombre = nombre;

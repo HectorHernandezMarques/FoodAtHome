@@ -6,6 +6,7 @@ package es.urjc.dad.practica.prueba;
 import javax.annotation.PostConstruct;
 import javax.servlet.http.HttpSession;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,25 +14,31 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.http.ResponseEntity;
 
-import es.urjc.dad.practica.prueba.Entity.Comidas;
 import es.urjc.dad.practica.prueba.Entity.Bebidas;
+import es.urjc.dad.practica.prueba.Entity.Comidas;
+import es.urjc.dad.practica.prueba.Entity.Ofertas;
 import es.urjc.dad.practica.prueba.Entity.Pedidos;
-import es.urjc.dad.practica.prueba.Repositories.PedidoRepository;
-import es.urjc.dad.practica.prueba.Repositories.ComidasRepository;
 import es.urjc.dad.practica.prueba.Repositories.BebidasRepository;
+import es.urjc.dad.practica.prueba.Repositories.ComidasRepository;
+import es.urjc.dad.practica.prueba.Repositories.OfertasRepository;
+import es.urjc.dad.practica.prueba.Repositories.PedidoRepository;
 
 @Controller
 public class Controlador  {
 	
 	@Autowired
-	private ComidasRepository comidas;
+	private ComidasRepository comidaR;
 	
 	@Autowired
-	private PedidoRepository pedidos;
+	private PedidoRepository pedidoR;
 	
 	@Autowired
-	private BebidasRepository bebidas;
+	private BebidasRepository bebidaR;
+	
+	@Autowired
+	private OfertasRepository ofertaR;
 	
 	private String infoCompartida;
 	
@@ -40,11 +47,56 @@ public class Controlador  {
 	@PostConstruct
 	public void init(){
 		
-	    comidas.save(new Comidas("Hamburguesa",2,""));
-		comidas.save(new Comidas("Pizza",6,""));
-		comidas.save(new Comidas("Patatas",3,""));
-		bebidas.save(new Bebidas(true,"Agua",1,""));
-		bebidas.save(new Bebidas(true,"Ceveza", 2,""));
+	    
+//		comidaR.save(new Comidas("Pizza",6,""));
+//		comidaR.save(new Comidas("Patatas",3,""));
+//		bebidaR.save(new Bebidas(true,"Agua",1,""));
+//		bebidaR.save(new Bebidas(true,"Ceveza", 2,""));
+//		ofertaR.save(new Ofertas("Oferta1",2,""));
+//		ofertaR.save(new Ofertas("Oferta2",2,""));
+//		ofertaR.save(new Ofertas("Oferta3",2,""));
+		
+		Comidas HAM =new Comidas("Hamburguesa",2,"");
+		Comidas PIZ =new Comidas("Patatas",3,"");
+		Comidas PAT =new Comidas("Patatas",3,"");
+		Comidas CAL = new Comidas("Callos", 10,"");
+		Comidas LEC = new Comidas("Lechuga", 3,"");
+		Bebidas AGU =new Bebidas(true,"Agua",1,"");
+		Bebidas CER =new Bebidas(true,"Cerveza",2,"");
+		Bebidas VIN =new Bebidas(true,"Vino",2,"");
+		Ofertas OF1 =new Ofertas("Oferta1",2,"");
+		Ofertas OF2 =new Ofertas("Oferta2",7,"");
+		Ofertas OF3 =new Ofertas("Oferta3",9,"");
+		Pedidos pedido = new Pedidos("Pedido1",1);
+		
+		comidaR.save(HAM);
+		comidaR.save(PIZ);
+		comidaR.save(PAT);
+		comidaR.save(CAL);
+		comidaR.save(LEC);
+		bebidaR.save(AGU);
+		bebidaR.save(CER);
+		bebidaR.save(VIN);
+		
+		
+		
+		OF1.getComidas().add(HAM);
+		OF2.getBebidas().add(AGU);
+		OF2.getComidas().add(PIZ);
+//		OF2.getComidas().add(HAM);
+		OF3.getComidas().add(PAT);
+	
+		pedido.getComidas().add(CAL);
+		pedido.getComidas().add(LEC);
+		
+		System.out.println(CAL.getNombre());
+
+		pedidoR.save(pedido);
+		ofertaR.save(OF1);
+		ofertaR.save(OF2);
+		ofertaR.save(OF3);
+		
+
 		
 	
 
@@ -71,7 +123,7 @@ public class Controlador  {
 	@GetMapping("/")
 	public String tablon(Model model) {
 
-		model.addAttribute("comidas", comidas);
+		model.addAttribute("comidas", comidaR);
 
 		return "prueba";
 	}
@@ -92,8 +144,8 @@ public class Controlador  {
 	@GetMapping("/main/Productos")
 	public String Productos(Model model) {
 		
-		model.addAttribute("comidas", comidas.findAll());
-		model.addAttribute("bebidas",bebidas.findAll());
+		model.addAttribute("comidas", comidaR.findAll());
+		model.addAttribute("bebidas",bebidaR.findAll());
 		
 		return "Productos";	
 	}
@@ -140,8 +192,8 @@ public class Controlador  {
 	@GetMapping("/anadproduc")
 	public String anadProduc(Model model){
 		
-		model.addAttribute("comidas", comidas.findAll());
-		model.addAttribute("bebidas", bebidas.findAll());
+		model.addAttribute("comidas", comidaR.findAll());
+		model.addAttribute("bebidas", bebidaR.findAll());
 		
 		
 		
@@ -160,11 +212,11 @@ public class Controlador  {
 		if (bebidanew.getTipo()) {
 			
  
-		bebidas.save(bebidanew);
+		bebidaR.save(bebidanew);
 		}
 		else
 		{
-		comidas.save(comidanew);
+		comidaR.save(comidanew);
 		}
 
 		return "prueba";
@@ -173,8 +225,7 @@ public class Controlador  {
 	
 //	@GetMapping("/pedir")
 //	public String nuevoPedido(Model model) {
-//
-//		model.addAttribute("pedidos",pedidos.findAll());
+//		model.addAttribute("pedidos",pedidoR.findAll());
 //
 //		return "Productos";
 //	}
@@ -182,9 +233,49 @@ public class Controlador  {
 	@PostMapping("/pedido")
 	public String nuevoPedido(Pedidos pedidonew, Model model ) {		
 
-		pedidos.save(pedidonew);
+		pedidoR.save(pedidonew);
 
 		return "pedidoinfo2";
+	}
+	@PostMapping("/main/Productos/pedirComida")
+	public String nuevoPedidoComida(Model model,Comidas c, Pedidos pedidonew) {
+		
+		
+		c=comidaR.getOne(c.getId());
+		pedidonew.getComidas().add(c);
+		pedidoR.save(pedidonew);
+		pedidonew.setComentario(c.getNombre());
+		 
+		return "web_html";
+	}
+
+	
+	
+	@PostMapping("/main/Productos/pedirBebida")
+	
+	public String nuevoPedidoBebida(Model model, Bebidas b, Pedidos pedidonew) {
+		
+		b=bebidaR.getOne(b.getId());
+		pedidonew.getBebidas().add(b);
+		pedidoR.save(pedidonew);
+		pedidonew.setComentario(b.getNombre());
+		
+		
+		return "web_html";
+	}
+	
+	@GetMapping("/main/Ofertas/pedirOferta")
+	
+	public String nuevoPedidoOferta(Model model, Ofertas o, Pedidos pedidonew) {
+		
+		o=ofertaR.getOne(o.getId());
+		pedidonew.getOfertas().add(o);
+		pedidonew.getComentario();
+		pedidoR.save(pedidonew);
+		
+		
+		
+		return "prueba";
 	}
 		
 }

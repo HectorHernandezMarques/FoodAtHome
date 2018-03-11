@@ -47,30 +47,33 @@
   			<br></br>
   						
  
-  			<form action="/pedirComida" method="POST">
+  			<form action="/main/Productos/pedirComida" method="POST">
   				
 						<select name='id' >
 							{{#comidas}}
 								<option value= {{id}}>{{nombre}}</option>						
 							{{/comidas}}
+								
 							
 						</select>
-						<input type='submit' value='Enviar' >
+						<input type='submit' value='Enviar'/>
 						</form>
 						
 						
-				<form action="/pedirBebida" method="POST">		
+				<form action="/main/Productos/pedirBebida" method="POST">		
 						<select name='id'>
 						{{#bebidas}} 
-			 				<option value="{{id}}">{{nombre}}</option> 
+			 				<option value="{{id}}">{{nombre}}</option> 	
 						{{/bebidas}}
+						
+						
 						</select>
-			<input type='submit' value='Enviar' >
+			<input type='submit' value='Enviar' />
 			</form>
 			
-			<form action="/pedir" >	
-			<input type='submit' value='Pedir'>
-			</form>
+	
+			<a href="/Productos" ><H2>VOLVER</H2>
+			
 			</body>			
   	 </html>			
    			
