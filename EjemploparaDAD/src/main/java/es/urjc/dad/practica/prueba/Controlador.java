@@ -30,7 +30,7 @@ public class Controlador  {
 	
 	@Autowired
 	private ComidasRepository comidaR;
-	
+	 
 	@Autowired
 	private PedidoRepository pedidoR;
 	
@@ -41,6 +41,8 @@ public class Controlador  {
 	private OfertasRepository ofertaR;
 	
 	private String infoCompartida;
+	
+	long CountPedido = 1;
 	
 	
 	
@@ -57,7 +59,7 @@ public class Controlador  {
 //		ofertaR.save(new Ofertas("Oferta3",2,""));
 		
 		Comidas HAM =new Comidas("Hamburguesa",2,"");
-		Comidas PIZ =new Comidas("Patatas",3,"");
+		Comidas PIZ =new Comidas("Pizza",3,"");
 		Comidas PAT =new Comidas("Patatas",3,"");
 		Comidas CAL = new Comidas("Callos", 10,"");
 		Comidas LEC = new Comidas("Lechuga", 3,"");
@@ -96,7 +98,7 @@ public class Controlador  {
 		ofertaR.save(OF2);
 		ofertaR.save(OF3);
 		
-
+		
 		
 	
 
@@ -184,6 +186,7 @@ public class Controlador  {
 	@GetMapping("/Pedidos")
 	public String Pedidos(Model model)
 	{
+		model.addAttribute("pedidos", pedidoR.findAll());
 		
 		return "Pedido";
 	}
@@ -240,12 +243,19 @@ public class Controlador  {
 	@PostMapping("/main/Productos/pedirComida")
 	public String nuevoPedidoComida(Model model,Comidas c, Pedidos pedidonew) {
 		
+		CountPedido++;
 		
 		c=comidaR.getOne(c.getId());
 		pedidonew.getComidas().add(c);
-		pedidoR.save(pedidonew);
+		pedidonew.setId(CountPedido);
 		pedidonew.setComentario(c.getNombre());
-		 
+		pedidonew.setPrecio(c.getPrecio());
+		pedidoR.save(pedidonew);
+		
+		pedidonew.setComentario(c.getNombre());
+		
+		
+		
 		return "web_html";
 	}
 
@@ -253,12 +263,16 @@ public class Controlador  {
 	
 	@PostMapping("/main/Productos/pedirBebida")
 	
-	public String nuevoPedidoBebida(Model model, Bebidas b, Pedidos pedidonew) {
+	public String nuevoPedidoBebida(Model model, Bebidas b, Pedidos pedidobeb) {
+		
+		CountPedido++;
 		
 		b=bebidaR.getOne(b.getId());
-		pedidonew.getBebidas().add(b);
-		pedidoR.save(pedidonew);
-		pedidonew.setComentario(b.getNombre());
+		pedidobeb.getBebidas().add(b);
+		pedidobeb.setId(CountPedido);
+		pedidobeb.setComentario(b.getNombre());
+		pedidobeb.setPrecio(b.getPrecio());
+		pedidoR.save(pedidobeb);
 		
 		
 		return "web_html";
@@ -266,16 +280,20 @@ public class Controlador  {
 	
 	@GetMapping("/main/Ofertas/pedirOferta")
 	
-	public String nuevoPedidoOferta(Model model, Ofertas o, Pedidos pedidonew) {
+	public String nuevoPedidoOferta(Model model, Ofertas o, Pedidos pedidoof) {
 		
+		CountPedido++;
 		o=ofertaR.getOne(o.getId());
-		pedidonew.getOfertas().add(o);
-		pedidonew.getComentario();
-		pedidoR.save(pedidonew);
+		pedidoof.getOfertas().add(o);
+		pedidoof.getComentario();
+		pedidoof.setId(CountPedido);
+		pedidoof.setPrecio(o.getPrecio());
+		pedidoR.save(pedidoof);
 		
 		
 		
-		return "prueba";
+		
+		return "web_html";
 	}
 		
 }
