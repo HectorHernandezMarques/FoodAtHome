@@ -43,7 +43,7 @@ public class Controlador  {
 	private String infoCompartida;
 	
 	long CountPedido = 1;
-	
+	int precioPed=0;
 	
 	
 	@PostConstruct
@@ -241,15 +241,14 @@ public class Controlador  {
 		return "pedidoinfo2";
 	}
 	@PostMapping("/main/Productos/pedirComida")
-	public String nuevoPedidoComida(Model model,Comidas c, Pedidos pedidonew) {
+	public String nuevoPedidoComida(Model model,Comidas c) {
 		
-		CountPedido++;
-		
+
+		Pedidos pedidonew = pedidoR.getOne(CountPedido);
 		c=comidaR.getOne(c.getId());
 		pedidonew.getComidas().add(c);
-		pedidonew.setId(CountPedido);
 		pedidonew.setComentario(c.getNombre());
-		pedidonew.setPrecio(c.getPrecio());
+		precioPed= precioPed + (c.getPrecio());
 		pedidoR.save(pedidonew);
 		
 		pedidonew.setComentario(c.getNombre());
@@ -263,15 +262,14 @@ public class Controlador  {
 	
 	@PostMapping("/main/Productos/pedirBebida")
 	
-	public String nuevoPedidoBebida(Model model, Bebidas b, Pedidos pedidobeb) {
+	public String nuevoPedidoBebida(Model model, Bebidas b) {
 		
-		CountPedido++;
 		
+		Pedidos pedidobeb = pedidoR.getOne(CountPedido);
 		b=bebidaR.getOne(b.getId());
 		pedidobeb.getBebidas().add(b);
-		pedidobeb.setId(CountPedido);
 		pedidobeb.setComentario(b.getNombre());
-		pedidobeb.setPrecio(b.getPrecio());
+		precioPed= precioPed + (b.getPrecio());
 		pedidoR.save(pedidobeb);
 		
 		
@@ -280,14 +278,13 @@ public class Controlador  {
 	
 	@GetMapping("/main/Ofertas/pedirOferta")
 	
-	public String nuevoPedidoOferta(Model model, Ofertas o, Pedidos pedidoof) {
-		
-		CountPedido++;
+	public String nuevoPedidoOferta(Model model, Ofertas o) {
+
+		Pedidos pedidoof = pedidoR.getOne(CountPedido);
 		o=ofertaR.getOne(o.getId());
 		pedidoof.getOfertas().add(o);
 		pedidoof.getComentario();
-		pedidoof.setId(CountPedido);
-		pedidoof.setPrecio(o.getPrecio());
+		precioPed= precioPed + (o.getPrecio());
 		pedidoR.save(pedidoof);
 		
 		
@@ -296,4 +293,14 @@ public class Controlador  {
 		return "web_html";
 	}
 		
+	@GetMapping("/main/Pedido/comprarPedido")
+	public String comprarPedido(Model model,Pedidos pedidonew){
+		pedidonew.setPrecio(precioPed);
+		pedidoR.save(pedidonew);
+		precioPed=0;
+		CountPedido++;
+		pedidonew.setId(CountPedido);
+		pedidoR.save(pedidonew);
+		return "web_html";
+	}
 }
