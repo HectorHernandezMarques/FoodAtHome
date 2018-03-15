@@ -1,9 +1,9 @@
 Manifest-Version: 1.0
 Implementation-Title: EjemploparaDAD
 Implementation-Version: 0.0.1-SNAPSHOT
-Built-By: Admin
+Built-By: mangel
 Implementation-Vendor-Id: es.urjc.dad.practica
-Build-Jdk: 1.8.0_25
+Build-Jdk: 1.8.0_151
 Implementation-URL: http://projects.spring.io/spring-boot/ejem1/
 Created-By: Maven Integration for Eclipse
 Implementation-Vendor: Pivotal Software, Inc.

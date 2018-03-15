@@ -247,11 +247,9 @@ public class Controlador  {
 		Pedidos pedidonew = pedidoR.getOne(CountPedido);
 		c=comidaR.getOne(c.getId());
 		pedidonew.getComidas().add(c);
-		pedidonew.setComentario(c.getNombre());
+		pedidonew.setComentario("Pedido "+ CountPedido);
 		precioPed= precioPed + (c.getPrecio());
 		pedidoR.save(pedidonew);
-		
-		pedidonew.setComentario(c.getNombre());
 		
 		
 		
@@ -268,7 +266,7 @@ public class Controlador  {
 		Pedidos pedidobeb = pedidoR.getOne(CountPedido);
 		b=bebidaR.getOne(b.getId());
 		pedidobeb.getBebidas().add(b);
-		pedidobeb.setComentario(b.getNombre());
+		pedidobeb.setComentario("Pedido "+ CountPedido);
 		precioPed= precioPed + (b.getPrecio());
 		pedidoR.save(pedidobeb);
 		
@@ -283,7 +281,7 @@ public class Controlador  {
 		Pedidos pedidoof = pedidoR.getOne(CountPedido);
 		o=ofertaR.getOne(o.getId());
 		pedidoof.getOfertas().add(o);
-		pedidoof.getComentario();
+		pedidoof.setComentario("Pedido "+ CountPedido);
 		precioPed= precioPed + (o.getPrecio());
 		pedidoR.save(pedidoof);
 		
@@ -299,6 +297,7 @@ public class Controlador  {
 		pedidoR.save(pedidonew);
 		precioPed=0;
 		CountPedido++;
+		pedidonew = pedidoR.getOne(CountPedido);
 		pedidonew.setId(CountPedido);
 		pedidoR.save(pedidonew);
 		return "web_html";
