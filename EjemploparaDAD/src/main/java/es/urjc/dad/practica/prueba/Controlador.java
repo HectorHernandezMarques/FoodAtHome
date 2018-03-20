@@ -4,6 +4,7 @@ package es.urjc.dad.practica.prueba;
 //import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.http.ResponseEntity;
-
+import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import es.urjc.dad.practica.prueba.Entity.Bebidas;
@@ -109,8 +110,7 @@ public class Controlador  {
 	
 	
 	@RequestMapping ("/main")
-	public String contWeb (Model model){		
-		
+	public String contWeb (Model model){
 		
 		return "web_html";
 	}
@@ -131,6 +131,19 @@ public class Controlador  {
 		
 		
 		return "loginerror";
+	
+
+	}
+	
+	@GetMapping("/login")
+	public String Login (Model model,HttpServletRequest request){		
+		
+		CsrfToken token = (CsrfToken) request.getAttribute("_csrf");
+		model.addAttribute("token", token.getToken()); 
+		
+		
+		
+		return "parteprivada";
 	
 
 	}

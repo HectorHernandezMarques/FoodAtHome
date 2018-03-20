@@ -37,7 +37,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.authorizeRequests().antMatchers("/admin").authenticated();
 
         // Login form
-        http.formLogin().loginPage("/main");
+        http.formLogin().loginPage("/login");
         http.formLogin().usernameParameter("username");
         http.formLogin().passwordParameter("password");
         http.formLogin().defaultSuccessUrl("/admin");
@@ -48,7 +48,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.logout().logoutSuccessUrl("/main");
         
         // Disable CSRF at the moment
-        http.csrf().disable();
+//        http.csrf().disable();
     }
 
     @Override
@@ -57,5 +57,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     	// User
         auth.inMemoryAuthentication().withUser("Admin").password("patatas").roles("USER");
     }
+    
+    	
+
 
 }
