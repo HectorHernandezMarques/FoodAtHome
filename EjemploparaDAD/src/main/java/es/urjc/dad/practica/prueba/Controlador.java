@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.http.ResponseEntity;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import es.urjc.dad.practica.prueba.Entity.Bebidas;
 import es.urjc.dad.practica.prueba.Entity.Comidas;
 import es.urjc.dad.practica.prueba.Entity.Ofertas;
@@ -112,15 +114,29 @@ public class Controlador  {
 		
 		return "web_html";
 	}
-	@RequestMapping("/admin")
-	public String Admin (Model model, @RequestParam String name){
+	@GetMapping("/admin")
+	public String Admin (Model model){
 		
-		model.addAttribute("name",name);
+		
 		
 		return "Admin";
 	
 
 	}
+	
+	
+	@GetMapping("/loginerror")
+	public String LoginError (){
+		
+		
+		
+		return "loginerror";
+	
+
+	}
+	
+	
+	
 	
 	@GetMapping("/")
 	public String tablon(Model model) {
@@ -191,6 +207,11 @@ public class Controlador  {
 		return "Pedido";
 	}
 	
+	@GetMapping("/anadoferta")
+	public String anadOferta(Model model){
+		
+		return "mantenimiento";
+	}
 	
 	@GetMapping("/anadproduc")
 	public String anadProduc(Model model){
