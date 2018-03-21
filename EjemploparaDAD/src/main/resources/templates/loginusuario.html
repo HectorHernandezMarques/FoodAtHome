@@ -1,0 +1,23 @@
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<body>
+		   	<style type="text/css">
+		body {  
+        background:url('http://touchechicago.com/wp-content/uploads/2013/10/wood-bg-2-1024x640.jpg') repeat 0 0;
+ 			}
+		</style>
+	
+	<div class="carrito" align="center">
+	<img role="presentation" src="https://pbs.twimg.com/media/DV2ypqPW0AMKN7u.png:large" height="200" alt= "">
+				<br></br> 
+				<p><h2>ACCEDE COMO USUARIO PARA PEDIR:</h2></p>
+				<br></br>
+				<br></br>
+				<form action="/login" method="post">
+				<label>USUARIO:</label><input type="text" name="username" /><br />
+				<label>CONTRASEÑA:</label><input type="password" name="password" /><br />
+				<input type="submit" value="Entrar" /><br />
+				<br></br>
+				<input type="hidden" name="_csrf" value="{{token}}"/>	
+				
+				</form>

@@ -69,6 +69,8 @@ public class Controlador  {
 		Bebidas AGU =new Bebidas(true,"Agua",1,"");
 		Bebidas CER =new Bebidas(true,"Cerveza",2,"");
 		Bebidas VIN =new Bebidas(true,"Vino",2,"");
+		Bebidas COL =new Bebidas(true,"Refresco Cola",2,"");
+		Bebidas GAS =new Bebidas(true,"Gaseosa",1,"");
 		Ofertas OF1 =new Ofertas("Oferta1",2,"");
 		Ofertas OF2 =new Ofertas("Oferta2",7,"");
 		Ofertas OF3 =new Ofertas("Oferta3",9,"");
@@ -82,6 +84,8 @@ public class Controlador  {
 		bebidaR.save(AGU);
 		bebidaR.save(CER);
 		bebidaR.save(VIN);
+		bebidaR.save(COL);
+		bebidaR.save(GAS);
 		
 		
 		
@@ -110,13 +114,14 @@ public class Controlador  {
 	
 	
 	@RequestMapping ("/main")
-	public String contWeb (Model model){
+	public String contWeb (Model model, HttpServletRequest request) {
+
+		 model.addAttribute("admin", request.isUserInRole("ADMIN"));
 		
 		return "web_html";
 	}
 	@GetMapping("/admin")
-	public String Admin (Model model){
-		
+	public String Admin (Model model){ 
 		
 		
 		return "Admin";
@@ -136,10 +141,7 @@ public class Controlador  {
 	}
 	
 	@GetMapping("/login")
-	public String Login (Model model,HttpServletRequest request){		
-		
-		CsrfToken token = (CsrfToken) request.getAttribute("_csrf");
-		model.addAttribute("token", token.getToken()); 
+	public String Login (Model model){ 
 		
 		
 		
@@ -275,8 +277,9 @@ public class Controlador  {
 		return "pedidoinfo2";
 	}
 	@PostMapping("/main/Productos/pedirComida")
-	public String nuevoPedidoComida(Model model,Comidas c) {
+	public String nuevoPedidoComida(Model model,Comidas c,HttpServletRequest request){		
 		
+		CsrfToken token = (CsrfToken) request.getAttribute("_csrf");
 
 		Pedidos pedidonew = pedidoR.getOne(CountPedido);
 		c=comidaR.getOne(c.getId());

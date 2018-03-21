@@ -82,7 +82,8 @@
 			<p><a>BIENVENIDO</a></p>
 		</div>	
 		<form action="/logout" method="post">
-			<input type='submit' value='SALIR'>		
+			<input type='submit' value='SALIR'>
+			<input type="hidden" name="_csrf" value="{{token}}"/>		
 		</form>	
 	</body>
 </html>

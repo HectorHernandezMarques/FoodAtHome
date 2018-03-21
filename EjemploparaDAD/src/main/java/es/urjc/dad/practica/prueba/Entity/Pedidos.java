@@ -37,8 +37,8 @@ public class Pedidos {
 	@OneToMany 
 	private List<Ofertas> ofertas = new ArrayList<>();
 	
-	@OneToOne (cascade= CascadeType.ALL)
-	private Administradores Administradores;
+//	@OneToOne (cascade= CascadeType.ALL)
+//	private Administradores Administradores;
 	
 //	
 //	@OneToMany
@@ -119,17 +119,6 @@ public class Pedidos {
 	public void setOfertas(List<Ofertas> ofertas) {
 		this.ofertas = ofertas;
 	}
-
-
-	public Administradores getAdministradores() {
-		return Administradores;
-	}
-
-
-	public void setAdministradores(Administradores administradores) {
-		Administradores = administradores;
-	}
-
 
 
 
