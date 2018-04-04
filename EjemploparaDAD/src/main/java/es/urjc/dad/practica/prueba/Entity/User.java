@@ -21,6 +21,7 @@ public class User {
 	private long id;
 	
 	private String name;
+	//private String email;
 	private String passwordHash;
 	
 	@ElementCollection(fetch = FetchType.EAGER)
@@ -32,9 +33,10 @@ public class User {
 	
 	public User(){}
 	
-	public User(String name, String password,String... roles) {
+	public User(String name/*,String email*/, String password,String... roles) {
 		super();
 		this.name = name;
+		//this.email = email;
 		this.passwordHash = new BCryptPasswordEncoder().encode(password);
 		this.roles = new ArrayList<>(Arrays.asList(roles));
 		
@@ -63,6 +65,14 @@ public class User {
 	public void setRoles(List<String> roles) {
 		this.roles = roles;
 	}
+
+	/*public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}*/
 	
 	
 

@@ -8,5 +8,6 @@ import es.urjc.dad.practica.prueba.Entity.User;
 public interface UsersRepository extends CrudRepository<User, Long> {
 
     User findByName(String name);
+	//User findByEmail(String email);
 
 }
