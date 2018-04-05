@@ -67,7 +67,7 @@ public class MailController {
 			message.setFrom(new InternetAddress("username"));
 			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email, false)); //Indicamos donde se dirige el email (TO)
 			message.setSubject("Pedido FoodAtHome");
-			message.setText("Su pedido se ha realizado con exito " + email + " en aproximadamente 30 minutos podra recibirlo en la direccion que nos ha facilitado, que lo disfrute");
+			message.setText("Su cuenta se ha realizado con exito para el correo" + email + " podra acceder a nuestros servicios de compra con el usuario y contraseña que haya metido, que lo disfrute!");
 			
 //			@REQUESTMAPPING("/HOLA")
 //		    PUBLIC VOID TEST() {

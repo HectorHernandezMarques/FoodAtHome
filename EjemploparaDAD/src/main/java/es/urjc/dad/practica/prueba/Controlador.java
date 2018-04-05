@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.client.RestTemplate;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.stereotype.Controller;
@@ -23,10 +24,12 @@ import es.urjc.dad.practica.prueba.Entity.Bebidas;
 import es.urjc.dad.practica.prueba.Entity.Comidas;
 import es.urjc.dad.practica.prueba.Entity.Ofertas;
 import es.urjc.dad.practica.prueba.Entity.Pedidos;
+import es.urjc.dad.practica.prueba.Entity.User;
 import es.urjc.dad.practica.prueba.Repositories.BebidasRepository;
 import es.urjc.dad.practica.prueba.Repositories.ComidasRepository;
 import es.urjc.dad.practica.prueba.Repositories.OfertasRepository;
 import es.urjc.dad.practica.prueba.Repositories.PedidoRepository;
+import es.urjc.dad.practica.prueba.Repositories.UsersRepository;
 
 @Controller
 public class Controlador  {
@@ -42,6 +45,9 @@ public class Controlador  {
 	
 	@Autowired
 	private OfertasRepository ofertaR;
+	
+	@Autowired
+	private UsersRepository usrRep;
 	
 	private String infoCompartida;
 	
@@ -339,4 +345,9 @@ public class Controlador  {
 		pedidoR.save(pedidonew);
 		return "web_html";
 	}
+	
+	
+	
+	
+	
 }

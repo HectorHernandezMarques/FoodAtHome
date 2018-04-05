@@ -1,0 +1,46 @@
+<html>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<body>
+		   	<style type="text/css">
+/* 		body {   */
+/*         background:url('http://touchechicago.com/wp-content/uploads/2013/10/wood-bg-2-1024x640.jpg') repeat 0 0; */
+/*  			} */
+		</style>
+	
+	<div class="carrito" align="center">
+	<img role="presentation" src="https://pbs.twimg.com/media/DV2ypqPW0AMKN7u.png:large" height="200" alt= "">
+				Contact
+	<div id="registro" class="section md-padding">
+		<div class="container">
+			<div class="row">
+
+
+				login
+				<div class="col-md">
+					<div class="contact">
+						<i class="fa fa-user"></i>
+						<h3>Registro</h3>
+					</div>
+				</div>
+				/login
+
+				form register
+				<div class="col-md-4 col-md-offset-4">
+					<form method='POST' action="/registroCliente">
+						<input type="text" class="input" placeholder="Nombre" name ="nombre">
+						<input type="email" class="input" placeholder="Email" name ="email">
+						<input type="password" class="input" placeholder="Contraseña" name ="password">
+						<input type="hidden" name="_csrf" value="{{token}}"/>	
+						<p></p>
+						<center><button class="main-btn .col-4">Registrarse</button> </center>					
+					</form>
+			</div>
+				/form register
+
+			</div>
+		</div>
+	</div>
+	/Contact
+
+
+
