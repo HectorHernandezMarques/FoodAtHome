@@ -11,7 +11,7 @@ public interface UsersRepository extends CrudRepository<User, Long> {
     User findByName(String name);
 	//User findByEmail(String email);
     
-    @Cacheable
+ //   @Cacheable
 	User findByEmail(String email);
 
 }

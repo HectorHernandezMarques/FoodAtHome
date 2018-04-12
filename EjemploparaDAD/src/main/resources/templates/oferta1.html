@@ -11,13 +11,27 @@
 	 				<form action="/main/Ofertas/pedirOferta" >
  		 				<input type="hidden" name='id' value=1> 
  		 				<input type="hidden" name='comentario' value='OFERTA 1'> 
+ 		 				
+ 		 			
 
 
  					<input  type='image'src="http://frozali.com/wp-content/uploads/2012/08/carneres.png" height="300" alt='submit'/> 
  					<input type="hidden" name="_csrf" value="{{token}}"/>
  			</form> 
  			
+ 			
+ 			
  				</div>
+ 				
+ 				<form action="/registroCliente" method="post">
+				<label>USUARIO:</label><input type="text" name="name" /><br />
+				<label>EMAIL:</label><input type="text" name="email" /><br />
+				<label>CONTRASEÑA:</label><input type="password" name="password" /><br />
+				<input type="submit" value="Entrar" /><br />
+				<br></br>
+				<input type="hidden" name="_csrf" value="{{token}}"/>	
+				
+				</form>
 		
 	</body>
 </html>

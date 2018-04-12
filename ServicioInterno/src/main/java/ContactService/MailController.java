@@ -17,8 +17,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 //Anotaciones
 import org.springframework.web.bind.annotation.RestController;
@@ -39,49 +42,44 @@ public class MailController {
 	
 	
 	//Email y contraseña para usuario
-	//private final String usrname = "practicadad.2018@gmail.com"; //Ejemplo
+	private final String usrname = "practicadad.2018@gmail.com"; //Ejemplo
 	//@Value ("${password}") private String password; //La contraseña la indico en el application.properties
 	
 	//Get mapping para indicar la url donde se envia el correo
-	@GetMapping(value = "/mail/{email}")
-	public ResponseEntity <Boolean> send (@PathVariable String email){
+	@PostMapping(value = "/mail/")
+	public ResponseEntity <Boolean> sendMail (@RequestBody Email mail){
 		
+		String name = mail.getName();
+		String email = mail.getEmail();
+		
+		System.out.println("Datos correctamente recibidos!");
+		System.out.println("Nombre: " + name + "  Email: " + email);
 		
 		try {
-			Security.addProvider(new com.sun.net.ssl.internal.ssl.Provider());
-			final String SSL_FACTORY = "javax.net.ssl.SSLSocketFactory";
+//			Security.addProvider(new com.sun.net.ssl.internal.ssl.Provider());
+//			final String SSL_FACTORY = "javax.net.ssl.SSLSocketFactory";
 			
 			
-			Properties prop_pass  = System.getProperties(); //Coge la contraseña de app properties
-			prop_pass.setProperty("mail.smtps.host", "smtp.gmail.com");
-			prop_pass.setProperty("mail.smtp.socketFactory.class", SSL_FACTORY);
-			prop_pass.setProperty("mail.smtp.socketFactory.fallback", "false");
-			prop_pass.setProperty("mail.smtp.port", "465"); //Puerto 465 porque utilizamos SSL
-			prop_pass.setProperty("mail.smtp.socketFactory.port", "465");
-			prop_pass.setProperty("mail.smtps.auth", "true");
+//			Properties prop_pass  = System.getProperties(); //Coge la contraseña de app properties
 			
-			Session new_session = Session.getInstance(prop_pass, null); //Crea la sesion con la contraseña que hemos cogido de las properties
+//			Session new_session = Session.getInstance(prop_pass, null); //Crea la sesion con la contraseña que hemos cogido de las properties
 			//Creamos mensaje de tipo MIME, formato para mensajes en SMTP
-			final MimeMessage message = new MimeMessage(new_session);
+			MimeMessage message = javaMailSender.createMimeMessage();
+			MimeMessageHelper helper;
 			
-			message.setFrom(new InternetAddress("username"));
-			message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(email, false)); //Indicamos donde se dirige el email (TO)
-			message.setSubject("Pedido FoodAtHome");
-			message.setText("Su cuenta se ha realizado con exito para el correo" + email + " podra acceder a nuestros servicios de compra con el usuario y contraseña que haya metido, que lo disfrute!");
+			helper = new MimeMessageHelper(message,true);
 			
-//			@REQUESTMAPPING("/HOLA")
-//		    PUBLIC VOID TEST() {
-//		    		SYSTEM.OUT.PRINTLN("HOLA");
-//		    		GSON GSON = NEW GSON();
-//		    		STRING JSONINSTRING = GSON.TOJSON(NEW EMAIL("MANOLO", "PACO", "HOLA QUE TAL TODO"));
-//		    		SYSTEM.OUT.PRINTLN(JSONINSTRING);
-//		    }
+//			message.setFrom(new InternetAddress(usrname));
+			helper.setTo(email); //Indicamos donde se dirige el email (TO)
+			helper.setSubject("Pedido FoodAtHome");
+			helper.setText("Su cuenta se ha realizado con exito para el correo " + email + " podra acceder a nuestros servicios de compra con el usuario y contraseña que haya metido, que lo disfrute " +name+ "!");
+			
 			
 			
 			//Uso de SMTP para enviar el correo
-//			SMTPTransport sending = (SMTPTransport) new_session.getTransport("smtps");
+		//	SMTPTransport sending = (SMTPTransport) new_session.getTransport("smtps");
 //			sending.connect(System.getProperties(Host),spring.mail.username, "password");
-//			sending.sendMessage(message,  message.getAllRecipients());
+	//		sending.sendMessage(message,  message.getAllRecipients());
 //			sending.close();
 			
 			javaMailSender.send(message);
