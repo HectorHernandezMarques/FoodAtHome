@@ -22,6 +22,20 @@
 				
 				</form>
 	</div>
+		<div class="carrito" align="center">
+			<br></br>
+			<p>Si no estás inscrito, <h2>REGÍSTRATE</h2></p>
+			<br></br>
+			<form action="/registroCliente" method="post">
+				<label>USUARIO:</label><input type="text" name="name" /><br />
+				<label>EMAIL:</label><input type="text" name="email" /><br />
+				<label>CONTRASEÃ‘A:</label><input type="password" name="password" /><br />
+				<input type="submit" value="Entrar" /><br />
+				<br></br>
+				<input type="hidden" name="_csrf" value="{{token}}"/>	
+				
+				</form>
+				</div>
 			
 
 </body>

@@ -47,7 +47,7 @@ public class RegisterController {
 			
 		} else {
 			
-			return("registro");
+			return("web_html");
 			
 		}
 	
