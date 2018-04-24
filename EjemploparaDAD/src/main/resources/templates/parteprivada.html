@@ -3,7 +3,7 @@
 <body>
 		   	<style type="text/css">
 		body {  
-        background:url('http://touchechicago.com/wp-content/uploads/2013/10/wood-bg-2-1024x640.jpg') repeat 0 0;
+        background:url('http://luxfon.com/pic/201203/1920x1080/luxfon.com-1242.jpg') repeat 0 0;
  			}
 		</style>
 	
@@ -27,9 +27,9 @@
 			<p>Si no estás inscrito, <h2>REGÍSTRATE</h2></p>
 			<br></br>
 			<form action="/registroCliente" method="post">
-				<label>USUARIO:</label><input type="text" name="name" /><br />
-				<label>EMAIL:</label><input type="text" name="email" /><br />
-				<label>CONTRASEÃ‘A:</label><input type="password" name="password" /><br />
+				<label>USUARIO:</label><input type="text" name="name" required/><br />
+				<label>EMAIL:</label><input type="email" name="email" required/><br />
+				<label>CONTRASEÑA:</label><input type="password" name="password" required/><br />
 				<input type="submit" value="Entrar" /><br />
 				<br></br>
 				<input type="hidden" name="_csrf" value="{{token}}"/>	

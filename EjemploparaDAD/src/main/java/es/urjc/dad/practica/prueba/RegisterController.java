@@ -29,7 +29,7 @@ public class RegisterController {
 	@PostMapping(value="/registroCliente")
 	public String registroCliente(@RequestParam String name,@RequestParam String email,@RequestParam String password) {
 		
-		if(userRepositorio.findByEmail(email) == null) {
+		if((userRepositorio.findByEmail(email) == null) && (name!="") && (email!="")) {
 			
 			System.out.println(email);
 			
