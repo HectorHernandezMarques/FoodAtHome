@@ -75,6 +75,8 @@ FoodAtHome es una web de pedidos de comida a domicilio, en la cual, podrás elab
      
      Con el comando "**Vagrant up**" conseguiremos ejecutar este archivo que creará las máquinas virtuales, cada una de ellas, ya sean  bases de datos o host tendrán una configuración distinta:
      
+     ![imagen](https://github.com/pracDAD2018/FoodAtHome/blob/master/EjemploparaDAD/Screenshots/vagrant%20up.jpg)
+     
         BBDD: 
      
      
