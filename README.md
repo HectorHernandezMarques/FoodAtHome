@@ -42,33 +42,35 @@ FoodAtHome es una web de pedidos de comida a domicilio, en la cual, podrás elab
    
    - Contacto: formulario de contacto para los clientes.   
     ![imagen](https://github.com/pracDAD2018/FoodAtHome/blob/master/EjemploparaDAD/Screenshots/Contacto.png)
+    
+    
    
    
    # Diagrama de navegacion
    
    ![imagen](https://github.com/pracDAD2018/FoodAtHome/blob/master/EjemploparaDAD/Screenshots/Diagrama%20de%20navegacion.png)
    
-    # FASE 3
-    
-    En la siguiente fase, mostraremos los cambios realizados en el diagrama de navegación de web y además un diagrama de clases y       templates. Pero, en primer lugar indicamos paso por paso las instrucciones necesarias para desplegar nuestra aplicación:
-    
-    - En primer lugar, una vez tenemos concluida nuestra interfaz web y funcionado en un servidor local, generamos los archivos .jar que en nuestro caso se engloban en dos, aplicación principal y servicio interno:
-       
+   FASE  3
+   
+   En la siguiente fase, mostraremos los cambios realizados en el diagrama de navegación de web y además un diagrama de clases y       templates. Pero, en primer lugar indicamos paso por paso las instrucciones necesarias para desplegar nuestra aplicación
+    -En primer lugar, una vez tenemos concluida nuestra interfaz web y funcionado en un servidor local, generamos los archivos .jar que en nuestro caso se engloban en dos, aplicación principal y servicio interno:
        Dentro de STS, elegimos "Run as" y seguidamente "Build Maven Project", esto nos depliega una nueva ventana.
-       En la propia ventana en el apartado "Goals" escribiremos "Clean package", con lo que se nos genera el .jar en la carpeta "target"         (debemos repetir esta acción para el servicio interno.)
-       
-    - En segundo lugar, una vez generados los .jar, podremos probar su correcto funcionamiento:
-    
+       En la propia ventana en el apartado "Goals" escribiremos "Clean package", con lo que se nos genera el .jar en la carpeta "target"         (debemos repetir esta acción para el servicio interno.)       
+    - En segundo lugar, una vez generados los .jar, podremos probar su correcto funcionamiento:    
        Abrimos la consola de nuestro sistema operativo (en nuestro caso, hemos usado 3 distintos ya que los encargados de la práctica           contábamos en nuestros equipos con Windows, Linux y MAC, respectivamente) con la siguiente instrucción en uno de nuestros casos 
         "java -jar nombredelarchivo.jar". Teniendo encuenta que previamente hemos instalado java y mysql, con los siguiente comandos:
               JAVA: sudo apt-get install default-jre
                     sudo apt-get install default-jdk
               MYSQL: sudo apt-get install mysql-server mysql-client
-                     sudo mysql_secure_installation
-                     
+                     sudo mysql_secure_installation                     
      - En tercer lugar y como paso más largo, crearemos todas las máquinas virtuales necesarias, en nuestro caso 6 : el Host y su correspondiente réplica, Database y su réplica, servicio interno y el balanceador.
+     Para agilizar este proceso, hemos creado un archivo "Vagrantfile" en el cual hemos adjuntado todas las instrucciones necesarias para montar la 6 máquinas de forma secuencial, sin tener que hacer una por una. Adjuntamos el archivo:
+     
      
      
      
     
   
+
+   
+ 
