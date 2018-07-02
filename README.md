@@ -172,6 +172,11 @@ FoodAtHome es una web de pedidos de comida a domicilio, en la cual, podrás elab
      -  Diagrama de clases y templates                  
                             
        ![imagen](https://github.com/pracDAD2018/FoodAtHome/blob/master/EjemploparaDAD/Screenshots/diagrama%20de%20clases%20y%20tamplates.jpg)
+       
+       
+      - Diagrama de navegacion actualizado
+      
+      ![imagen](https://github.com/pracDAD2018/FoodAtHome/blob/master/EjemploparaDAD/Screenshots/diagrama%20de%20navegacion.JPG)
         
           
   
