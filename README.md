@@ -167,7 +167,11 @@ FoodAtHome es una web de pedidos de comida a domicilio, en la cual, podrás elab
         
         ![imagen](https://github.com/pracDAD2018/FoodAtHome/blob/master/EjemploparaDAD/Screenshots/haproxycfg.png)
         
-        Por ultimo ejecutamos sudo service haproxy restart para reiniciar el servicio y a continuacion sudo service haproxy start
+        Por ultimo ejecutamos sudo service haproxy restart para reiniciar el servicio y a continuacion sudo service haproxy start.
+     
+     -  Diagrama de clases y templates                  
+                            
+       ![imagen](https://github.com/pracDAD2018/FoodAtHome/blob/master/EjemploparaDAD/Screenshots/diagrama%20de%20clases%20y%20tamplates.jpg)
         
           
   
