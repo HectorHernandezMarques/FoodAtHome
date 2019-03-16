@@ -1,1 +1,3 @@
-exec java -jar -Dspring.datasource.url=jdbc:mysql://hectorh-mysql-service/test app.jar
+#!/bin/sh
+
+exec java -jar -Dspring.datasource.url="jdbc:mysql://hectorh-mysql-service:3306/test" app.jar
