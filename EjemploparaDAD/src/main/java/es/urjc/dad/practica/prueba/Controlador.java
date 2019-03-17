@@ -82,16 +82,16 @@ public class Controlador  {
 		Ofertas OF3 =new Ofertas("Oferta3",9,"");
 		Pedidos pedido = new Pedidos("Pedido1",1);
 		
-		comidaR.save(HAM);
-		comidaR.save(PIZ);
-		comidaR.save(PAT);
-		comidaR.save(CAL);
-		comidaR.save(LEC);
-		bebidaR.save(AGU);
-		bebidaR.save(CER);
-		bebidaR.save(VIN);
-		bebidaR.save(COL);
-		bebidaR.save(GAS);
+		//comidaR.save(HAM);
+		//comidaR.save(PIZ);
+		//comidaR.save(PAT);
+		//comidaR.save(CAL);
+		//comidaR.save(LEC);
+		//bebidaR.save(AGU);
+		//bebidaR.save(CER);
+		//bebidaR.save(VIN);
+		//bebidaR.save(COL);
+		//bebidaR.save(GAS);
 		
 		
 		
@@ -106,10 +106,10 @@ public class Controlador  {
 		
 		System.out.println(CAL.getNombre());
 
-		pedidoR.save(pedido);
-		ofertaR.save(OF1);
-		ofertaR.save(OF2);
-		ofertaR.save(OF3);
+		//pedidoR.save(pedido);
+		//ofertaR.save(OF1);
+		//ofertaR.save(OF2);
+		//ofertaR.save(OF3);
 		
 		
 		
