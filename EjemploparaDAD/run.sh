@@ -1,3 +1,3 @@
 #!/bin/sh
 
-exec java -jar -Dspring.datasource.url="jdbc:mysql://hectorh-mysql-service:3306/test" app.jar
+exec java -jar -Dspring.datasource.url="jdbc:mysql://hectorh-mysql-service:3306/test" ejem1-0.0.1-SNAPSHOT.jar
