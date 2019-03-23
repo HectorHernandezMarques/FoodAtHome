@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hectorh-food-at-home-deployment
+  labels:
+    app: hectorh-food-at-home
+spec:
+  selector:
+    matchLabels:
+      app: hectorh-food-at-home
+  replicas: 1
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      name: hectorh-food-at-home
+      labels:
+        app: hectorh-food-at-home
+    spec:
+      containers:
+      - name: hectorh-food-at-home-container
+        image: hectorhernandezmarques/hectorh-food-at-home-image:1.0
+        env:
+          - name: MYSQL_ROOT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: hectorh-secrets
+                key: mysql-root-password
+          - name: MYSQL_DATABASE
+            value: test
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: hectorh-food-at-home-service
+  labels:
+    app: hectorh-food-at-home
+spec:
+  ports:
+    - port: 443
+      targetPort: 8080
+      protocol: TCP
+      name: hectorh-food-at-home
+  selector:
+    app: hectorh-food-at-home
+  type: LoadBalancer

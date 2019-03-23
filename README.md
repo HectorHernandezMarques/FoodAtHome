@@ -1,3 +1,28 @@
+## Despliegue en Minikube
+
+- Desplegar
+
+    - `$ minkube start`
+    - `$ kubectl create -f secret.yaml`
+    - `$ kubectl create -f mysql.yaml`
+    - `$ kubectl create -f internal.yaml`
+    - `$ kubectl create -f food-at-home.yaml`
+
+- Obtener ip y puerto para acceder a la web.
+
+    - `$ minikube ip`
+    - `$ kubectl get service hectorh-food-at-home-service --output='jsonpath={.spec.ports[0].nodePort}'`
+
+
+- Eliminar
+
+    - `$ minkube start`
+    - `$ kubectl delete -f secret.yaml`
+    - `$ kubectl delete -f mysql.yaml`
+    - `$ kubectl delete -f internal.yaml`
+    - `$ kubectl delete -f food-at-home.yaml`
+
+
 # FoodAtHome
 
 FoodAtHome es una web de pedidos de comida a domicilio, en la cual, podrás elaborar tu propio menú combinando los distintos productos disponibles y tenerlos rápidamente en casa para disfrutar de ellos

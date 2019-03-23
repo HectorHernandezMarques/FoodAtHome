@@ -1,0 +1,58 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: hectorh-mysql-service
+spec:
+  type: NodePort
+  ports:
+  - port: 3306
+  selector:
+    app: hectorh-mysql
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: hectorh-mysql-pv-claim
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 1Gi
+---
+apiVersion: apps/v1 
+kind: Deployment
+metadata:
+  name: hectorh-mysql-deployment
+spec:
+  selector:
+    matchLabels:
+      app: hectorh-mysql
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: hectorh-mysql
+    spec:
+      containers:
+      - image: mysql:5.6
+        name: hectorh-mysql-container
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: hectorh-secrets
+              key: mysql-root-password
+        - name: MYSQL_DATABASE
+          value: test
+        ports:
+        - containerPort: 3306
+          name: hectorh-mysql
+        volumeMounts:
+        - name: hectorh-mysql-persistent-storage
+          mountPath: /var/lib/mysql
+      volumes:
+      - name: hectorh-mysql-persistent-storage
+        persistentVolumeClaim:
+          claimName: hectorh-mysql-pv-claim
