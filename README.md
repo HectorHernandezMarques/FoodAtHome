@@ -13,6 +13,10 @@
     - `$ minikube ip`
     - `$ kubectl get service hectorh-food-at-home-service --output='jsonpath={.spec.ports[0].nodePort}'`
 
+    -   or just `$ minikube service hectorh-food-at-home-service`
+    
+    De todas formas hay que añadir `https://` antes de la ip para forzar la la comunicación segura.
+    Y aceptar la conexión, ya que la conexión nos avisará de conexión insegura.
 
 - Eliminar
 
