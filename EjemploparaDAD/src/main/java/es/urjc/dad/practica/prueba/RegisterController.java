@@ -25,7 +25,7 @@ public class RegisterController {
             Email nuevoEmail = new Email(name, email);
             userRepositorio.save(nuevoUsuario);
 
-            String url = "http://localhost:8070/mail/";
+            String url = "http://hectorh-internal-service:8070/mail/";
             RestTemplate rest = new RestTemplate();
             rest.postForLocation(url, nuevoEmail);
             System.out.println("Datos enviados!");
